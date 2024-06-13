@@ -172,4 +172,53 @@ export default {
     businessTwoFa:
       'Protect your account from unauthorized access by using both an existing password and a one-time code.',
   },
+  cards: {
+    create: 'Create',
+    sign: 'Sign',
+    send: 'Send',
+    done: 'Done',
+    createDescription:
+      'You can easily upload almost all common document formats from your device or file-sharing platforms such as Google Drive, OneDrive, or Dropbox. Simply indicate the signatories and the signature sequence. Then, click at the desired location to draw your signature and send the document.',
+    createSignDescription:
+      'Sign electronically from anywhere, using any device. You can draw a signature directly on the screen or take a picture of your facsimile. Additionally, you have the option to request ID verification to enhance assurance of the signers identity.',
+    createSendDescription:
+      'Signers will receive instant email and SMS notifications upon document submission. The document can be accessed and signed from any device. You can also check the status of the document and send reminders if necessary.',
+    createDoneDescription:
+      'Save digitally stamped documents in eSignix, either on your device or on other file-sharing platforms. Generate detailed reports containing information such as the date, time, signers, IP address, device, browser, and more.',
+  },
+  description: {
+    elSign: 'Electornic Signature',
+    desc1:
+      'As technology continues to advance, electronic signatures are increasingly replacing physical ones and carry equal legal weight. With eSignix, you have the flexibility to utilize both electronic and qualified electronic signatures. A qualified electronic signature involves the use of an ID card and a specialized USB reader that you must physically possess during the signing process. On the other hand, electronic signatures offer a simpler, more convenient, and secure alternative that doesnt necessitate any specific device. ',
+    desc2:
+      'eSignixs electronic signature solution, which adheres to international standards, enables you to sign documents electronically from anywhere, whether on a personal computer or any smartphone, thereby expediting business processes.Electronic signatures find applicability across a broad spectrum of sectors including legal, educational, banking and finance, telecommunications, construction, real estate, healthcare, insurance, and many others.',
+  },
+  faq: {
+    title: 'Frequently Asked Questions - FAQ',
+    question1: 'What is an electronic signature?',
+    answer1:
+      'An electronic signature, unlike traditional signature, is simpler, more convenient and secure, requiring no additional equipment.',
+    question2: 'In which industries can I use electronic signature?',
+    answer2:
+      'You can use electronic signatures in a wide range of industries, including legal, education, banking and finance, telecommunications, construction, real estate, healthcare, insurance, and many others.',
+    question3: 'What legal force does an electronic signature have?',
+    answer3:
+      'An electronic signature is legally binding under the laws of the United States of America, Canada, Georgia, the European Union, and many other European countries.',
+    question4: 'Is it possible to make changes to the document after the electronic signature?',
+    answer4: 'Unauthorized changes cannot be made to electronically signed documents.',
+    question5: 'Is it mandatory for the signatory to be registered on the eSignix platform?',
+    answer5: 'No, it is not mandatory. The document can be signed even without registration.',
+    question6: 'What are acceptable file size and formats for document upload?',
+    answer6:
+      'You can upload documents in Microsoft Word, PDF, and Microsoft Excel formats. The maximum size of each document should not exceed 10MB.',
+    question7: 'How do I upload my documents to the platform?',
+    answer7:
+      'You can easily upload documents from your own device or cloud storage such as Google Drive, OneDrive, Dropbox, and more.',
+    question8: 'Where can I store electronically signed documents?',
+    answer8:
+      'Electronically signed documents can be stored on the eSignix platform or in other devices or cloud storage such as Google Drive, OneDrive, Dropbox and others.',
+    question9: 'Is it secure to use the eSignix platform?',
+    answer9:
+      "Yes, it is safe to use the eSignix platform. eSignix utilizes Digital Ocean's VPS hosting in data centers located in Frankfurt (Germany) and New York (USA). These data centers are fully compliant with various international standards, including the American Institute of Certified Public Accountants (AICPA), Cloud Security Alliance (CSA), General Data Protection Regulation (GDPR), and Global Cross-Border Privacy Rules (CBPR). Germany and the United States of America are recognized as countries where the transfer of personal data is safe according to these standards.",
+  },
 } as const;

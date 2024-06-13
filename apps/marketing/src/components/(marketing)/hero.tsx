@@ -11,6 +11,8 @@ import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-fl
 import { cn } from '@documenso/ui/lib/utils';
 import { Card, CardContent, CardHeader, CardTitle } from '@documenso/ui/primitives/card';
 
+import { useScopedI18n } from '~/locales/client';
+
 import { Widget } from './widget';
 
 export type HeroProps = {
@@ -49,6 +51,9 @@ const HeroTitleVariants: Variants = {
 
 export const Hero = ({ className, ...props }: HeroProps) => {
   const event = usePlausible();
+
+  const scopedT = useScopedI18n('cards');
+  const scopedTDescription = useScopedI18n('description');
 
   const { getFlag } = useFeatureFlags();
 
@@ -95,7 +100,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
           animate="animate"
           className="text-center text-4xl font-bold leading-tight tracking-tight md:text-[48px] lg:text-[64px]"
         >
-          ელექტრონული ხელმოწერა
+          {scopedTDescription('elSign')}
         </motion.h2>
         {/* 
         <motion.div
@@ -127,50 +132,34 @@ export const Hero = ({ className, ...props }: HeroProps) => {
         <div className="mt-12 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <Card>
             <CardHeader>
-              <CardTitle>შექმენი</CardTitle>
+              <CardTitle>{scopedT('create')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>
-                ატვირთე დოკუმენტის ნებისმიერი ფორმატი მარტივად შენი მოწყობილობიდან ან დოკუმენტების
-                ელექტრონული საცავიდან, როგორიცაა Google Drive, OneDrive, Dropbox. მიუთითე
-                ხელმომწერები, თანმიმდევრობა, მონიშნე ადგილი ხელმოწერისთვის და გააგზავნე.
-              </p>
+              <p>{scopedT('createDescription')}</p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>გააგზავნე</CardTitle>
+              <CardTitle>{scopedT('send')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>
-                მოაწერე ხელი ელექტრონულად, ნებისმიერი მოწყობილობიდან და ადგილიდან, მოხაზე ეკრანზე
-                ხელმოწერა ან გადაუღე სურათი შენს ფაქსიმილეს. საჭიროების შემთხევაში მოითხოვე
-                ხელმომწერის ID ვერიფიკაცია და დარწმუნდი მისი ვინაობის ნამდვილობაში.
-              </p>
+              <p>{scopedT('createSendDescription')}</p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>მოაწერე</CardTitle>
+              <CardTitle>{scopedT('sign')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>
-                გაუგზავნე მომენტალურად ხელმომწერებს შეტყობინება ელ. ფოსტით და SMS-ით. დოკუმენტზე
-                წვდომა და ხელმოწერა შესაძლებელია ნებისმიერი მოწყობილობიდან. შეამოწმე სტატუსი და
-                საჭიროების შემთხვევაში გააგზავნე შეხსენება.
-              </p>
+              <p>{scopedT('createSignDescription')}</p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>მზადაა</CardTitle>
+              <CardTitle>{scopedT('done')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>
-                შეინახე ციფრული შტამპით დამოწმებული დოკუმენტი ორიენტ ოფისში ან სხვა მოწყობილობასა თუ
-                ქლაუდზე დეტალური რეპორტით: თარიღი, დრო, ხელმომწერები, IP მისამართი, მოწყობილობა,
-                ბრაუზერი და ა.შ.
-              </p>
+              <p>{scopedT('createDescription')}</p>
             </CardContent>
           </Card>
         </div>
@@ -236,24 +225,9 @@ export const Hero = ({ className, ...props }: HeroProps) => {
           animate="animate"
         >
           <Widget className="mt-12">
-            <strong>ელექტრონული ხელმოწერა</strong>
-            <p className="w-full max-w-[70ch]">
-              ტექნოლოგიების განვითარებასთან ერთად, ელექტრონული ხელმოწერა ეტაპობრივად ანაცვლებს
-              მატერიალურს და აქვს თანაბარი იურიდიული ძალა. ორიენტ ოფისის დახმარებით, შეგიძლიათ
-              ისარგებლოთ როგორც ელექტრონული, ასევე კვალიფიციური ელექტრონული ხელმოწერით. კვალიფიციური
-              ელექტრონული ხელმოწერა იყენებს ID ბარათს და სპეციალურ წამკითხველ USB მოწყობილობას,
-              რომელიც ფიზიკურად თან უნდა გქონდეთ ხელის მოწერისას.
-            </p>
-
-            <p className="w-full max-w-[70ch]">
-              ელექტრონული ხელმოწერა არის უფრო მარტივი, კომფორტული, უსაფრთხო და არ საჭიროებს
-              დამატებით მოწყობილობას. ორიენტ ოფისის ელექტრონული ხელმოწერა, რომელიც აკმაყოფილებს
-              საერთაშორისო სტანდარტებს, უზრუნველყოფს დოკუმენტზე ელექტრონულად ხელის მოწერას მსოფლიოს
-              ნებისმიერი წერტილიდან, პერსონალური კომპიუტერის ან ნებისმიერი სმარტფონის გამოყენებით და
-              ბიზნეს პროცესების აჩქარებას. ელექტრონული ხელმოწერა შეგიძლიათ გამოიყენოთ იურიდიულ,
-              საგანმათლებლო, საბანკო - საფინანსო, სატელეკომუნიკაციო, სამშენებლო, უძრავი ქონების,
-              ჯანდაცვის, დაზღვევის და სხვა სფეროებში.
-            </p>
+            <strong>{scopedTDescription('elSign')}</strong>
+            <p className="w-full max-w-[70ch]">{scopedTDescription('desc1')}</p>
+            <p className="w-full max-w-[70ch]">{scopedTDescription('desc2')}</p>
 
             <div className="flex h-24 items-center">
               <p className={cn('text-5xl [font-family:var(--font-caveat)]')}>Timur & Lucas</p>
