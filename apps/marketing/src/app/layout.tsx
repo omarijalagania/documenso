@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Caveat, Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import { AxiomWebVitals } from 'next-axiom';
 import { PublicEnvScript } from 'next-runtime-env';
@@ -18,8 +18,15 @@ import { PostHogPageview } from '~/providers/posthog';
 
 import './globals.css';
 
-const fontInter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-const fontCaveat = Caveat({ subsets: ['latin'], variable: '--font-signature' });
+const mtavruliMedium = localFont({
+  src: '../../public/fonts/Medium.woff',
+  variable: '--font-mtavruli-medium',
+});
+
+const mtavruliBold = localFont({
+  src: '../../public/fonts/SemiBold.woff',
+  variable: '--font-mtavruli-bold',
+});
 
 export function generateMetadata() {
   return {
@@ -51,13 +58,18 @@ export function generateMetadata() {
   };
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
   const flags = await getAllAnonymousFlags();
 
   return (
     <html
       lang="en"
-      className={cn(fontInter.variable, fontCaveat.variable)}
+      className={cn(mtavruliMedium.variable, mtavruliBold.variable)}
       suppressHydrationWarning
     >
       <head>
