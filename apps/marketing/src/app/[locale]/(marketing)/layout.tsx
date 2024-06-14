@@ -37,10 +37,14 @@ export default function MarketingLayout({ children, params }: MarketingLayoutPro
   return (
     <I18nProviderClient locale={locale}>
       <div
-        className={cn('relative flex min-h-[100vh] max-w-[100vw] flex-col pt-20 md:pt-28', {
-          'overflow-y-auto overflow-x-hidden':
-            pathname && !['/singleplayer', '/pricing'].includes(pathname),
-        })}
+        className={cn(
+          'relative flex min-h-[100vh] max-w-[100vw] flex-col pt-20 md:pt-28',
+
+          {
+            'overflow-y-auto overflow-x-hidden':
+              pathname && !['/singleplayer', '/pricing'].includes(pathname),
+          },
+        )}
       >
         <div
           className={cn('fixed left-0 top-0 z-50 w-full bg-transparent', {

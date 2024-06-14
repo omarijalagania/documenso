@@ -9,7 +9,6 @@ import { FeatureFlagProvider } from '@documenso/lib/client-only/providers/featur
 import { NEXT_PUBLIC_MARKETING_URL } from '@documenso/lib/constants/app';
 import { getAllAnonymousFlags } from '@documenso/lib/universal/get-feature-flag';
 import { TrpcProvider } from '@documenso/trpc/react';
-import { cn } from '@documenso/ui/lib/utils';
 import { Toaster } from '@documenso/ui/primitives/toaster';
 
 import { ThemeProvider } from '~/providers/next-theme';
@@ -67,11 +66,7 @@ export default async function RootLayout({
   const flags = await getAllAnonymousFlags();
 
   return (
-    <html
-      lang="en"
-      className={cn(mtavruliMedium.variable, mtavruliBold.variable)}
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -86,7 +81,10 @@ export default async function RootLayout({
         <PostHogPageview />
       </Suspense>
 
-      <body>
+      <body
+        style={{ fontFamily: 'var(--font-mtavruli-medium)' }}
+        className={`${mtavruliMedium.variable} ${mtavruliBold.variable}`}
+      >
         <FeatureFlagProvider initialFlags={flags}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <PlausibleProvider>

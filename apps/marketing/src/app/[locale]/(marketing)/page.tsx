@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars, @typescript-eslint/no-unused-vars */
 import type { Metadata } from 'next';
-import { Caveat } from 'next/font/google';
 
 import { cn } from '@documenso/ui/lib/utils';
 
@@ -17,13 +16,6 @@ export const metadata: Metadata = {
   },
 };
 
-const fontCaveat = Caveat({
-  weight: ['500'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-caveat',
-});
-
 export default async function IndexPage() {
   const starCount = await fetch('https://api.github.com/repos/documenso/documenso', {
     headers: {
@@ -35,7 +27,7 @@ export default async function IndexPage() {
     .catch(() => undefined);
 
   return (
-    <div className={cn('mt-12', fontCaveat.variable)}>
+    <div className={cn('mt-12')}>
       <Hero starCount={starCount} />
 
       <FasterSmarterBeautifulBento className="my-48" />

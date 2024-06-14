@@ -95,10 +95,11 @@ export const Hero = ({ className, ...props }: HeroProps) => {
 
       <div className="relative">
         <motion.h2
+          style={{ fontFamily: 'var(--font-mtavruli-bold)' }}
           variants={HeroTitleVariants}
           initial="initial"
           animate="animate"
-          className="text-center text-4xl font-bold leading-tight tracking-tight md:text-[48px] lg:text-[64px]"
+          className="text-center text-4xl leading-tight tracking-tight md:text-[48px] lg:text-[64px]"
         >
           {scopedTDescription('elSign')}
         </motion.h2>

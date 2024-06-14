@@ -68,6 +68,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
 
         {isSinglePlayerModeMarketingEnabled && (
           <Link
+            style={{ fontFamily: 'var(--font-mtavruli-bold)' }}
             href="/singleplayer"
             className="bg-primary dark:text-background rounded-full px-2 py-1 text-xs font-semibold sm:px-3"
           >
@@ -78,27 +79,31 @@ export const Header = ({ className, ...props }: HeaderProps) => {
 
       <div className="hidden items-center gap-x-6 md:flex">
         <Link
-          href={`${currentLocale}/pricing`}
+          style={{ fontFamily: 'var(--font-mtavruli-bold)' }}
+          href={`/${currentLocale}/pricing`}
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
           {scopedT('pricing')}
         </Link>
 
         <Link
-          href={`${currentLocale}/contact`}
+          style={{ fontFamily: 'var(--font-mtavruli-bold)' }}
+          href={`/${currentLocale}/contact`}
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
           {scopedT('contact')}
         </Link>
 
         <Link
-          href={`${currentLocale}/about`}
+          style={{ fontFamily: 'var(--font-mtavruli-bold)' }}
+          href={`/${currentLocale}/about`}
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
         >
           {scopedT('about')}
         </Link>
 
         <Link
+          style={{ fontFamily: 'var(--font-mtavruli-bold)' }}
           href="https://app.documenso.com/signin?utm_source=marketing-header"
           target="_blank"
           className="text-muted-foreground hover:text-muted-foreground/80 text-sm font-semibold"
@@ -107,7 +112,11 @@ export const Header = ({ className, ...props }: HeaderProps) => {
         </Link>
 
         <Button className="rounded-full" size="sm" asChild>
-          <Link href="https://app.documenso.com/signup?utm_source=marketing-header" target="_blank">
+          <Link
+            style={{ fontFamily: 'var(--font-mtavruli-bold)' }}
+            href="https://app.documenso.com/signup?utm_source=marketing-header"
+            target="_blank"
+          >
             {scopedT('register')}
           </Link>
         </Button>
