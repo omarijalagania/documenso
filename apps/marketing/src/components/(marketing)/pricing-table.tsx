@@ -449,7 +449,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
             )}
             onClick={() => setPeriod('MONTHLY')}
           >
-            Monthly
+            {scopedT('monthly')}
             {period === 'MONTHLY' && (
               <motion.div
                 layoutId={SELECTED_PLAN_BAR_LAYOUT_ID}
@@ -469,9 +469,9 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
             )}
             onClick={() => setPeriod('YEARLY')}
           >
-            Yearly
+            {scopedT('yearly')}
             <div className="bg-muted text-foreground block rounded-full px-2 py-0.5 text-xs">
-              Save $60
+              {scopedT('save')} $60
             </div>
             {period === 'YEARLY' && (
               <motion.div
@@ -486,10 +486,10 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
       <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
         <div
           data-plan="free"
-          className="bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border px-8 py-12 shadow-lg"
+          className="bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border px-20 py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('free')}</p>
-          <p className="text-primary mt-2.5 text-xl font-medium">$0</p>
+          <p className="text-primary mt-2.5 text-xl font-medium">0₾</p>
 
           <p className="text-foreground mt-4 max-w-[30ch] text-center">1 {scopedT('singleUser')}</p>
 
@@ -583,14 +583,12 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
         <div
           data-plan="early-adopter"
-          className="border-primary bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border-2 px-8 py-12 shadow-[0px_0px_0px_4px_#E3E3E380]"
+          className="border-primary bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border-2 px-20 py-12 shadow-[0px_0px_0px_4px_#E3E3E380]"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('startUp')}</p>
           <div className="text-primary mt-2.5 text-xl font-medium">
             <AnimatePresence mode="wait">
-              {period === 'MONTHLY' && (
-                <motion.div layoutId="pricing">30₾ / 30 {scopedT('day')}</motion.div>
-              )}
+              {period === 'MONTHLY' && <motion.div layoutId="pricing">30₾</motion.div>}
               {period === 'YEARLY' && <motion.div layoutId="pricing">$300</motion.div>}
             </AnimatePresence>
           </div>
@@ -636,10 +634,10 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
         <div
           data-plan="enterprise"
-          className="bg-background shadow-foreground/5 flex flex-col items-center justify-start rounded-lg border px-8 py-12 shadow-lg"
+          className="bg-background shadow-foreground/5 flex flex-col items-center justify-start rounded-lg border px-20 py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('business')}</p>
-          <p className="text-primary mt-2.5 text-xl font-medium">60₾ / 30 {scopedT('day')}</p>
+          <p className="text-primary mt-2.5 text-xl font-medium">60₾ </p>
 
           <p className="text-foreground mt-4 max-w-[30ch] text-center">1 {scopedT('singleUser')}</p>
 

@@ -186,17 +186,17 @@ export const Widget = ({ className, children, ...props }: WidgetProps) => {
   return (
     <>
       <Card
-        className={cn('mx-auto w-full max-w-4xl rounded-3xl before:rounded-3xl', className)}
+        className={cn('mx-auto w-full  rounded-3xl before:rounded-3xl', className)}
         gradient
         {...props}
       >
-        <div className="grid grid-cols-12 gap-y-8 overflow-hidden p-2 lg:gap-x-8">
+        <div className="grid grid-cols-10  gap-y-8 overflow-hidden p-2 lg:gap-x-8">
           <div className="text-muted-foreground col-span-12 flex flex-col gap-y-4 p-4 text-xs leading-relaxed lg:col-span-7">
             {children}
           </div>
 
           <form
-            className="bg-foreground/5 col-span-12 flex flex-col rounded-2xl p-6 lg:col-span-5"
+            className="bg-foreground/5 col-span-12 flex flex-col rounded-2xl p-6 lg:col-span-3"
             onSubmit={handleSubmit(onFormSubmit)}
           >
             <h3 className="text-xl font-semibold">Sign up to Early Adopter Plan</h3>

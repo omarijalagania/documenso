@@ -8,7 +8,7 @@ export default {
     repeatPassword: 'Repeat password',
     contact: 'Contact',
     about: 'About',
-    pricing: 'Pricing',
+    pricing: 'Plans & Pricing',
     register: 'Sign up',
     ge: 'Georgia',
     us: 'United States',
@@ -71,6 +71,7 @@ export default {
     earlyAdopters: 'Early Adopters',
     monthly: 'Monthly',
     yearly: 'Yearly',
+    save: 'Save',
     free: 'Personal',
     signup: 'Sign up',
     users: 'Users',
@@ -188,13 +189,21 @@ export default {
   },
   description: {
     elSign: 'Electornic Signature',
+    signSlogan: 'Esignix Team',
+    coFounder: 'Esignix - Sign in Seconds!',
     desc1:
       'As technology continues to advance, electronic signatures are increasingly replacing physical ones and carry equal legal weight. With eSignix, you have the flexibility to utilize both electronic and qualified electronic signatures. A qualified electronic signature involves the use of an ID card and a specialized USB reader that you must physically possess during the signing process. On the other hand, electronic signatures offer a simpler, more convenient, and secure alternative that doesnt necessitate any specific device. ',
     desc2:
       'eSignixs electronic signature solution, which adheres to international standards, enables you to sign documents electronically from anywhere, whether on a personal computer or any smartphone, thereby expediting business processes.Electronic signatures find applicability across a broad spectrum of sectors including legal, educational, banking and finance, telecommunications, construction, real estate, healthcare, insurance, and many others.',
   },
   faq: {
-    title: 'Frequently Asked Questions - FAQ',
+    price: 'Plans & Pricing',
+    startUsing: 'Get start using today',
+    title: 'Frequently Asked Questions',
+    headerQuestion: 'Want to find out more about Electronic Signature?',
+    headerAnswer:
+      'We are ready to help you choose the right plan or provide customized solutions that fits all your business needs.',
+    contactUs: 'Get in Touch',
     question1: 'What is an electronic signature?',
     answer1:
       'An electronic signature, unlike traditional signature, is simpler, more convenient and secure, requiring no additional equipment.',

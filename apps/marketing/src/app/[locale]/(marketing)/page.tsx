@@ -3,11 +3,7 @@ import type { Metadata } from 'next';
 
 import { cn } from '@documenso/ui/lib/utils';
 
-import { Callout } from '~/components/(marketing)/callout';
-import { FasterSmarterBeautifulBento } from '~/components/(marketing)/faster-smarter-beautiful-bento';
 import { Hero } from '~/components/(marketing)/hero';
-import { OpenBuildTemplateBento } from '~/components/(marketing)/open-build-template-bento';
-import { ShareConnectPaidWidgetBento } from '~/components/(marketing)/share-connect-paid-widget-bento';
 
 export const revalidate = 600;
 export const metadata: Metadata = {
@@ -30,11 +26,11 @@ export default async function IndexPage() {
     <div className={cn('mt-12')}>
       <Hero starCount={starCount} />
 
-      <FasterSmarterBeautifulBento className="my-48" />
-      <ShareConnectPaidWidgetBento className="my-48" />
-      <OpenBuildTemplateBento className="my-48" />
+      {/* <FasterSmarterBeautifulBento className="my-48" /> */}
+      {/* <ShareConnectPaidWidgetBento className="my-48" />
+      <OpenBuildTemplateBento className="my-48" /> */}
 
-      <Callout starCount={starCount} />
+      {/* <Callout starCount={starCount} /> */}
     </div>
   );
 }

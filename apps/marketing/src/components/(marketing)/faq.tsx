@@ -18,6 +18,34 @@ import { useScopedI18n } from '~/locales/client';
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
 const faqs = [
   {
     id: 1,
@@ -79,42 +107,37 @@ export type PricingPageProps = {
 
 export default function FaqContainer() {
   const scopeT = useScopedI18n('faq');
+
   return (
     <div className="mt-6 sm:mt-12">
       <div className="text-center">
-        <h1 className="text-3xl font-bold lg:text-5xl">Pricing</h1>
+        <h1 className="text-3xl font-bold lg:text-5xl">{scopeT('price')}</h1>
 
-        <p className="text-foreground mt-4 text-lg leading-normal">
-          Designed for every stage of your journey.
-        </p>
-        <p className="text-foreground text-lg leading-normal">Get started today.</p>
+        <p className="text-foreground mt-4 text-lg leading-normal">{scopeT('startUsing')}</p>
+        {/* <p className="text-foreground text-lg leading-normal">Get started today.</p> */}
       </div>
 
-      <div className="mt-12">
+      <div className="mt-6">
         <PricingTable />
       </div>
 
-      <div className="mx-auto mt-36 max-w-2xl">
-        <h2 className="text-center text-2xl font-semibold">
-          None of these work for you? Try self-hosting!
-        </h2>
+      <div className="mx-auto mt-36 max-w-3xl">
+        <h2 className="text-center text-2xl font-semibold">{scopeT('headerQuestion')}</h2>
 
         <p className="text-muted-foreground mt-4 text-center leading-relaxed">
-          Our self-hosted option is great for small teams and individuals who need a simple
-          solution. You can use our docker based setup to get started in minutes. Take control with
-          full customizability and data ownership.
+          {scopeT('headerAnswer')}
         </p>
 
         <div className="mt-4 flex justify-center">
           <Button variant="outline" size="lg" className="rounded-full hover:cursor-pointer" asChild>
             <Link href="https://github.com/documenso/documenso" target="_blank" rel="noreferrer">
-              Get Started
+              {scopeT('contactUs')}
             </Link>
           </Button>
         </div>
       </div>
 
-      <div className="mx-auto mt-36 max-w-2xl">
+      <div className="mx-auto mt-36 max-w-5xl">
         {/* FAQ Section */}
 
         <h2 className="text-4xl font-semibold">{scopeT('title')}</h2>
@@ -137,7 +160,7 @@ export default function FaqContainer() {
                 )}
               </AccordionTrigger>
 
-              <AccordionContent className="text-muted-foreground max-w-prose text-sm leading-relaxed">
+              <AccordionContent className="text-muted-foreground max-w-4xl text-sm leading-relaxed">
                 {scopeT(
                   faq.answer as
                     | 'answer1'
