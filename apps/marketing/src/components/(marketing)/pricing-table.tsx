@@ -453,7 +453,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
             {period === 'MONTHLY' && (
               <motion.div
                 layoutId={SELECTED_PLAN_BAR_LAYOUT_ID}
-                className="bg-foreground lg:bg-primary absolute bottom-0 left-0 h-[3px] w-full rounded-full"
+                className="bg-foreground lg:bg-primary absolute bottom-0 left-0 h-[3px] w-full rounded-full dark:invert"
               />
             )}
           </motion.button>
@@ -476,7 +476,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
             {period === 'YEARLY' && (
               <motion.div
                 layoutId={SELECTED_PLAN_BAR_LAYOUT_ID}
-                className="bg-foreground lg:bg-primary absolute bottom-0 left-0 h-[3px] w-full rounded-full"
+                className="bg-foreground lg:bg-primary absolute bottom-0 left-0 h-[3px] w-full rounded-full dark:invert"
               />
             )}
           </motion.button>
@@ -489,7 +489,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           className="bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border px-20 py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('free')}</p>
-          <p className="text-primary mt-2.5 text-xl font-medium">0₾</p>
+          <p className="text-primary mt-2.5 text-xl font-medium dark:invert">0₾</p>
 
           <p className="text-foreground mt-4 max-w-[30ch] text-center">1 {scopedT('singleUser')}</p>
 
@@ -583,13 +583,21 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
         <div
           data-plan="early-adopter"
-          className="border-primary bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border-2 px-20 py-12 shadow-[0px_0px_0px_4px_#E3E3E380]"
+          className="border-primary bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border-2 px-20 py-12 shadow-[0px_0px_0px_4px_#E3E3E380] dark:border-[#FFEB81]"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('startUp')}</p>
           <div className="text-primary mt-2.5 text-xl font-medium">
             <AnimatePresence mode="wait">
-              {period === 'MONTHLY' && <motion.div layoutId="pricing">30₾</motion.div>}
-              {period === 'YEARLY' && <motion.div layoutId="pricing">$300</motion.div>}
+              {period === 'MONTHLY' && (
+                <motion.div className="dark:invert" layoutId="pricing">
+                  30₾
+                </motion.div>
+              )}
+              {period === 'YEARLY' && (
+                <motion.div className="dark:invert" layoutId="pricing">
+                  $300
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
 
@@ -637,7 +645,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           className="bg-background shadow-foreground/5 flex flex-col items-center justify-start rounded-lg border px-20 py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('business')}</p>
-          <p className="text-primary mt-2.5 text-xl font-medium">60₾ </p>
+          <p className="text-primary mt-2.5 text-xl font-medium dark:invert">60₾ </p>
 
           <p className="text-foreground mt-4 max-w-[30ch] text-center">1 {scopedT('singleUser')}</p>
 

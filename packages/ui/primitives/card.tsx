@@ -38,7 +38,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
           {
             'gradient-border-mask before:pointer-events-none before:absolute before:-inset-[2px] before:rounded-lg before:p-[2px] before:[background:linear-gradient(var(--card-gradient-degrees),theme(230.5,100%,24.7%),theme(colors.border/80%)_30%)]':
               gradient,
-            'dark:gradient-border-mask before:pointer-events-none before:absolute before:-inset-[2px] before:rounded-lg before:p-[2px] before:[background:linear-gradient(var(--card-gradient-degrees),hsl(230.5,100%,24.7%),theme(colors.border/80%)_30%)]':
+            'dark:gradient-border-mask before:pointer-events-none before:absolute before:-inset-[2px] before:rounded-lg before:p-[2px] before:[background:linear-gradient(var(--card-gradient-degrees),hsl(230.5,100%,24.7%),theme(colors.border/80%)_30%)] dark:before:[background:linear-gradient(var(--card-gradient-degrees),#FFEB81,theme(colors.border/80%)_30%)]':
               gradient,
             'shadow-[0_0_0_4px_theme(colors.gray.100/70%),0_0_0_1px_theme(colors.gray.100/70%),0_0_0_0.5px_theme(colors.primary.DEFAULT/70%)]':
               true,

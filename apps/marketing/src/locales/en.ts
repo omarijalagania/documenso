@@ -230,4 +230,78 @@ export default {
     answer9:
       "Yes, it is safe to use the eSignix platform. eSignix utilizes Digital Ocean's VPS hosting in data centers located in Frankfurt (Germany) and New York (USA). These data centers are fully compliant with various international standards, including the American Institute of Certified Public Accountants (AICPA), Cloud Security Alliance (CSA), General Data Protection Regulation (GDPR), and Global Cross-Border Privacy Rules (CBPR). Germany and the United States of America are recognized as countries where the transfer of personal data is safe according to these standards.",
   },
+  footer: {
+    contactUs: 'Contact',
+    about: 'About us',
+    pricing: 'Plans & Pricing',
+    terms: 'Terms and Conditions',
+    privacy: 'Privacy Policy',
+    security: 'Security',
+    law: 'Law & Regulation',
+    cookie: 'Cookie Policy',
+    ka: 'Georgia',
+    en: 'United States',
+  },
+  aboutPage: {
+    desc1:
+      'Telecom 1, established in 2020, prides itself on its management team and professional staff, all of whom possess extensive experience in the Georgian telecommunications market. Dedicated to upholding cutting-edge standards, the company places a strong emphasis on innovation, efficiency, and teamwork to provide reliable and customized services to its customers, including:',
+    desc2:
+      'n 2024, Telecom 1 made another successful stride by introducing eSignix, an ERP (Enterprise Resource Planning) platform designed to streamline business operations, centralize core processes, and optimize efficiency.',
+    desc3:
+      'The eSignix platform is meticulously crafted to meet the diverse needs of dynamic markets spanning the United States of America, the European Union, Georgia, and other European countries.',
+
+    p2p: 'Internet - GPON and Peer-to-Peer (P2P)',
+    pbx: 'Virtual PBX',
+    voip: 'VoIP (Voice over IP)',
+    a2p: 'A2P (Application-to-Person) SMS',
+    colocation: 'Colocation (colocation center)',
+    ixp: 'IXP (Internet Exchange Point)',
+    corporateNetwork: 'Corporate internal networking',
+    branchConnection: 'Branch connectivity',
+    networkSecurity: 'Network security solutions',
+    opticalFiber: 'Intercity fiber optic network construction and technical support.',
+  },
 } as const;
+
+// const uListArray = [
+//   {
+//     id: 1,
+//     value: 'p2p',
+//   },
+//   {
+//     id: 2,
+//     value: 'pbx',
+//   },
+//   {
+//     id: 3,
+//     value: 'voip',
+//   },
+//   {
+//     id: 4,
+//     value: 'a2p',
+//   },
+//   {
+//     id: 5,
+//     value: 'colocation',
+//   },
+//   {
+//     id: 6,
+//     value: 'ixp',
+//   },
+//   {
+//     id: 7,
+//     value: 'corporateNetwork',
+//   },
+//   {
+//     id: 8,
+//     value: 'branchConnection',
+//   },
+//   {
+//     id: 9,
+//     value: 'networkSecurity',
+//   },
+//   {
+//     id: 10,
+//     value: 'opticalFiber',
+//   },
+// ];

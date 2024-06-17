@@ -168,7 +168,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
                 <div className="flex items-center justify-center p-8 opacity-40">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-folder-plus"
+                    className="icon icon-tabler icon-tabler-folder-plus dark:invert"
                     width="200"
                     height="200"
                     viewBox="0 0 24 24"
@@ -207,7 +207,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
                 /> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-certificate"
+                    className="icon icon-tabler icon-tabler-certificate dark:invert"
                     width="200"
                     height="200"
                     viewBox="0 0 24 24"
@@ -249,7 +249,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
                 <div className="flex items-center justify-center p-8 opacity-40">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-mail-forward"
+                    className="icon icon-tabler icon-tabler-mail-forward dark:invert"
                     width="200"
                     height="200"
                     viewBox="0 0 24 24"
@@ -289,7 +289,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
                 /> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="icon icon-tabler icon-tabler-circle-check"
+                    className="icon icon-tabler icon-tabler-circle-check dark:invert"
                     width="200"
                     height="200"
                     viewBox="0 0 24 24"

@@ -114,14 +114,18 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           </Link>
         </Button>
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger className="text-xs">
             {options.find((item) => item.value === currentLocale)?.label}
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuSeparator />
 
             {options.map((option) => (
-              <DropdownMenuItem key={option.id} onClick={() => changeLanguage(option.value)}>
+              <DropdownMenuItem
+                className="text-xs"
+                key={option.id}
+                onClick={() => changeLanguage(option.value)}
+              >
                 {option.label}
               </DropdownMenuItem>
             ))}

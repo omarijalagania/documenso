@@ -78,7 +78,8 @@
     --destructive: 0 87% 62%;
     --destructive-foreground: 0 87% 19%;
 
-    --ring: 230.5, 100%, 24.7%;
+    /* inverted yellow */
+    --ring: 50, 100%, 75%;
 
     --radius: 0.5rem;
 
