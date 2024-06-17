@@ -21,7 +21,7 @@ export default function MarketingLayout({ children, params }: MarketingLayoutPro
   const pathname = usePathname();
   const { locale } = params;
   const { getFlag } = useFeatureFlags();
-
+  console.log(pathname);
   const showProfilesAnnouncementBar = getFlag('marketing_profiles_announcement_bar');
 
   useEffect(() => {
@@ -71,7 +71,13 @@ export default function MarketingLayout({ children, params }: MarketingLayoutPro
           <Header className="mx-auto h-16 max-w-screen-xl px-4 md:h-20 lg:px-8" />
         </div>
 
-        <div className="relative max-w-screen-xl flex-1 px-4 sm:mx-auto lg:px-8">{children}</div>
+        <div
+          className={`relative ${
+            pathname?.includes('contact') ? 'w-[74%]' : 'max-w-screen-xl'
+          }  flex-1 px-4 sm:mx-auto lg:px-8`}
+        >
+          {children}
+        </div>
 
         <Footer className="bg-background border-muted mt-24 border-t" />
       </div>

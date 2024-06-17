@@ -4,16 +4,15 @@ import type { HTMLAttributes, KeyboardEvent } from 'react';
 import { useMemo, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Loader } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { usePlausible } from 'next-plausible';
 import { env } from 'next-runtime-env';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
-import { Card, CardContent } from '@documenso/ui/primitives/card';
+import { Card } from '@documenso/ui/primitives/card';
 import {
   Dialog,
   DialogContent,
@@ -22,14 +21,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@documenso/ui/primitives/dialog';
-import { Input } from '@documenso/ui/primitives/input';
 import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { claimPlan } from '~/api/claim-plan/fetcher';
 
 import { STEP } from '../constants';
-import { FormErrorMessage } from '../form/form-error-message';
 
 const ZWidgetFormSchema = z
   .object({
@@ -184,206 +181,45 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
   };
 
   return (
-    <>
-      <Card
-        className={cn('mx-auto w-full  rounded-3xl before:rounded-3xl', className)}
-        gradient
-        {...props}
-      >
-        <div className="grid grid-cols-10  gap-y-8 overflow-hidden p-2 lg:gap-x-8">
-          <div className="text-muted-foreground col-span-12 flex flex-col gap-y-4 p-4 text-xs leading-relaxed lg:col-span-7">
+    <motion.div
+      className="mt-12"
+      variants={{
+        initial: {
+          scale: 0.2,
+          opacity: 0,
+        },
+        animate: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            ease: 'easeInOut',
+            delay: 0.2,
+            duration: 0.8,
+          },
+        },
+      }}
+      initial="initial"
+      animate="animate"
+    >
+      <Card className={cn('mx-auto rounded-3xl before:rounded-3xl', className)} gradient {...props}>
+        <div className="grid grid-cols-12  gap-y-8 overflow-hidden p-2 lg:gap-x-3">
+          <div className="text-muted-foreground col-span-12 flex flex-col gap-y-4 p-4 text-xs leading-relaxed lg:col-span-6">
             {children}
           </div>
 
-          <form
-            className="bg-foreground/5 col-span-12 flex flex-col rounded-2xl p-6 lg:col-span-3"
-            onSubmit={handleSubmit(onFormSubmit)}
-          >
-            <h3 className="text-xl font-semibold">Sign up to Early Adopter Plan</h3>
-            <p className="text-muted-foreground mt-2 text-xs">
-              with Timur Ercan & Lucas Smith from Documenso
-            </p>
-
-            <hr className="mb-6 mt-4" />
-
-            <AnimatePresence>
-              <motion.div key="email">
-                <label htmlFor="email" className="text-foreground font-medium ">
-                  What’s your email?
-                </label>
-
-                <Controller
-                  control={control}
-                  name="email"
-                  render={({ field }) => (
-                    <div className="relative mt-2">
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="your@example.com"
-                        className="bg-background w-full pr-16"
-                        disabled={isSubmitting}
-                        onKeyDown={(e) =>
-                          field.value !== '' &&
-                          !errors.email?.message &&
-                          onEnterPress(onNextStepClick)(e)
-                        }
-                        {...field}
-                      />
-
-                      <div className="absolute inset-y-0 right-0 p-1.5">
-                        <Button
-                          type="button"
-                          className="bg-primary h-full w-14 rounded"
-                          disabled={!field.value || !!errors.email?.message}
-                          onClick={() => step === STEP.EMAIL && onNextStepClick()}
-                        >
-                          Next
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                />
-
-                <FormErrorMessage error={errors.email} className="mt-1" />
-              </motion.div>
-
-              {(step === STEP.NAME || step === STEP.SIGN) && (
-                <motion.div
-                  key="name"
-                  className="mt-4"
-                  animate={{
-                    opacity: 1,
-                    transform: 'translateX(0)',
-                  }}
-                  initial={{
-                    opacity: 0,
-                    transform: 'translateX(-25%)',
-                  }}
-                  exit={{
-                    opacity: 0,
-                    transform: 'translateX(25%)',
-                  }}
-                >
-                  <label htmlFor="name" className="text-foreground font-medium ">
-                    And your name?
-                  </label>
-
-                  <Controller
-                    control={control}
-                    name="name"
-                    render={({ field }) => (
-                      <div className="relative mt-2">
-                        <Input
-                          id="name"
-                          type="text"
-                          placeholder=""
-                          className="bg-background w-full pr-16"
-                          disabled={isSubmitting}
-                          onKeyDown={(e) =>
-                            field.value !== '' &&
-                            !errors.name?.message &&
-                            onEnterPress(onNextStepClick)(e)
-                          }
-                          {...field}
-                        />
-
-                        <div className="absolute inset-y-0 right-0 p-1.5">
-                          <Button
-                            type="button"
-                            className="bg-primary h-full w-14 rounded"
-                            disabled={!field.value || !!errors.name?.message}
-                            onClick={() => onNextStepClick()}
-                          >
-                            Next
-                          </Button>
-                        </div>
-                      </div>
-                    )}
-                  />
-
-                  <FormErrorMessage error={errors.name} className="mt-1" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <div className="mt-12 flex-1" />
-
-            <div className="flex items-center justify-between">
-              <p className="text-muted-foreground text-xs">
-                {isValid ? 'Ready for Signing' : `${stepsRemaining} step(s) until signed`}
-              </p>
-
-              <p className="text-muted-foreground block text-xs md:hidden">Minimise contract</p>
+          <div className="bg-foreground/5 col-span-12 flex flex-col rounded-2xl p-6 lg:col-span-6">
+            <div style={{ width: '100%' }}>
+              <iframe
+                width="100%"
+                height={600}
+                frameBorder={0}
+                scrolling="no"
+                marginHeight={0}
+                marginWidth={0}
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+              ></iframe>
             </div>
-
-            <div className="bg-background relative mt-2.5 h-[2px] w-full">
-              <div
-                className={cn('bg-primary/60 absolute inset-y-0 left-0 duration-200', {
-                  'w-1/3': stepsRemaining === 3,
-                  'w-2/3': stepsRemaining === 2,
-                  'w-11/12': stepsRemaining === 1,
-                  'w-full': isValid,
-                })}
-              />
-            </div>
-
-            <Card id="signature" className="mt-4" degrees={-140} gradient>
-              <CardContent
-                role="button"
-                className="relative cursor-pointer pt-6"
-                onClick={() => setShowSigningDialog(true)}
-              >
-                <div className="flex h-28 items-center justify-center pb-6">
-                  {!signatureText && signatureDataUrl && (
-                    <img
-                      src={signatureDataUrl}
-                      alt="user signature"
-                      className="h-full dark:invert"
-                    />
-                  )}
-
-                  {signatureText && (
-                    <p
-                      className={cn(
-                        'text-foreground truncate text-4xl font-semibold [font-family:var(--font-caveat)]',
-                      )}
-                    >
-                      {signatureText}
-                    </p>
-                  )}
-                </div>
-
-                <div
-                  className="absolute inset-x-0 bottom-0 flex cursor-auto items-center justify-between px-4 pb-2"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Input
-                    id="signatureText"
-                    className="text-foreground placeholder:text-muted-foreground truncate border-none p-0 text-sm focus-visible:ring-0"
-                    placeholder="Draw or type name here"
-                    disabled={isSubmitting}
-                    {...register('signatureText', {
-                      onChange: (e) => {
-                        if (e.target.value !== '') {
-                          setValue('signatureDataUrl', null);
-                        }
-                      },
-                    })}
-                  />
-
-                  <Button
-                    type="submit"
-                    className="disabled:bg-muted disabled:text-muted-foreground disabled:hover:bg-muted h-8"
-                    disabled={!isValid || isSubmitting}
-                  >
-                    {isSubmitting && <Loader className="mr-2 h-4 w-4 animate-spin" />}
-                    Sign
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </form>
+          </div>
         </div>
       </Card>
 
@@ -416,6 +252,6 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </>
+    </motion.div>
   );
 };

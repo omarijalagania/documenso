@@ -90,6 +90,32 @@ import { useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
 // import { StatusWidgetContainer } from './status-widget-container';
 
 export type FooterProps = HTMLAttributes<HTMLDivElement>;
@@ -203,7 +229,11 @@ export const Footer = ({ className, ...props }: FooterProps) => {
             </SelectTrigger>
             <SelectContent>
               {COUNTRIES.map((country) => (
-                <SelectItem key={country.id} value={country.value}>
+                <SelectItem
+                  className="dark:hover:text-[#FFEB81]"
+                  key={country.id}
+                  value={country.value}
+                >
                   {scopedT(country.label as keyof typeof scopedT)}
                 </SelectItem>
               ))}
