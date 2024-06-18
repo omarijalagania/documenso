@@ -46,6 +46,10 @@
     --warning: 54 96% 45%;
   }
 
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   .dark {
     --background: 0 0% 14.9%;
     --foreground: 0 0% 97%;
