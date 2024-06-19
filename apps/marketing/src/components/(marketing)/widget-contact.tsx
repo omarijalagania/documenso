@@ -1,7 +1,7 @@
 'use client';
 
-import type { HTMLAttributes, KeyboardEvent } from 'react';
-import { useMemo, useState } from 'react';
+import type { HTMLAttributes } from 'react';
+import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
@@ -25,8 +25,7 @@ import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { claimPlan } from '~/api/claim-plan/fetcher';
-
-import { STEP } from '../constants';
+import useFetchLocation from '~/hooks/useFetchLocation';
 
 const ZWidgetFormSchema = z
   .object({
@@ -48,19 +47,21 @@ const ZWidgetFormSchema = z
 
 export type TWidgetFormSchema = z.infer<typeof ZWidgetFormSchema>;
 
-type StepKeys = keyof typeof STEP;
-type StepValues = (typeof STEP)[StepKeys];
-
 export type WidgetProps = HTMLAttributes<HTMLDivElement>;
 
 export const WidgetContact = ({ className, children, ...props }: WidgetProps) => {
   const { toast } = useToast();
   const event = usePlausible();
-
-  const [step, setStep] = useState<StepValues>(STEP.EMAIL);
+  const { locationIp } = useFetchLocation();
   const [showSigningDialog, setShowSigningDialog] = useState(false);
   const [draftSignatureDataUrl, setDraftSignatureDataUrl] = useState<string | null>(null);
 
+  const geoAddressMap =
+    'https://maps.google.com/maps?width=100%25&height=600&hl=en&q=4/15%20Lane%201,%20Z.%20Gamsakhurdia%20Ave,%20Kutaisi,%20Georgia,%204600+(My%20Business%20Name)&t=&z=14&ie=UTF8&iwloc=B&output=embed';
+  const usAddressMap =
+    'https://maps.google.com/maps?width=100%25&height=600&hl=en&q=1414%20E%2012th%20St,%20Brooklyn,%20NY%2011230+(My%20Business%20Name)&t=&z=14&ie=UTF8&iwloc=B&output=embed';
+
+  console.log('locationIp', locationIp);
   const {
     control,
     register,
@@ -82,46 +83,6 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
 
   const signatureDataUrl = watch('signatureDataUrl');
   const signatureText = watch('signatureText');
-
-  const stepsRemaining = useMemo(() => {
-    if (step === STEP.NAME) {
-      return 2;
-    }
-
-    if (step === STEP.EMAIL) {
-      return 3;
-    }
-
-    return 1;
-  }, [step]);
-
-  const onNextStepClick = () => {
-    if (step === STEP.EMAIL) {
-      setStep(STEP.NAME);
-
-      setTimeout(() => {
-        document.querySelector<HTMLElement>('#name')?.focus();
-      }, 0);
-    }
-
-    if (step === STEP.NAME) {
-      setStep(STEP.SIGN);
-
-      setTimeout(() => {
-        document.querySelector<HTMLElement>('#signatureText')?.focus();
-      }, 0);
-    }
-  };
-
-  const onEnterPress = (callback: () => void) => {
-    return (e: KeyboardEvent) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-
-        callback();
-      }
-    };
-  };
 
   const onSignatureConfirmClick = () => {
     setValue('signatureDataUrl', draftSignatureDataUrl);
@@ -216,7 +177,7 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
                 scrolling="no"
                 marginHeight={0}
                 marginWidth={0}
-                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                src={locationIp === 'GE' ? geoAddressMap : usAddressMap}
               ></iframe>
             </div>
           </div>
