@@ -15,7 +15,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@documenso/ui/primitives/dropdown-menu';
 
@@ -37,12 +36,12 @@ export const Header = ({ className, ...props }: HeaderProps) => {
     {
       id: 1,
       value: 'en',
-      label: 'EN',
+      label: 'English - EN',
     },
     {
       id: 2,
       value: 'ka',
-      label: 'KA',
+      label: 'ქართული - KA',
     },
   ];
 
@@ -115,11 +114,11 @@ export const Header = ({ className, ...props }: HeaderProps) => {
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger className="text-xs">
-            {options.find((item) => item.value === currentLocale)?.label}
+            {options.find((item) => item.value === currentLocale)?.label.includes('EN')
+              ? 'EN'
+              : 'KA'}
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuSeparator />
-
             {options.map((option) => (
               <DropdownMenuItem
                 className="text-xs"

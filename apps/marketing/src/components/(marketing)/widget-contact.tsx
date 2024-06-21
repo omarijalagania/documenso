@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { usePlausible } from 'next-plausible';
 import { env } from 'next-runtime-env';
 import { useForm } from 'react-hook-form';
@@ -26,6 +27,7 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { claimPlan } from '~/api/claim-plan/fetcher';
 import useFetchLocation from '~/hooks/useFetchLocation';
+import { useScopedI18n } from '~/locales/client';
 
 const ZWidgetFormSchema = z
   .object({
@@ -55,7 +57,7 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
   const { locationIp } = useFetchLocation();
   const [showSigningDialog, setShowSigningDialog] = useState(false);
   const [draftSignatureDataUrl, setDraftSignatureDataUrl] = useState<string | null>(null);
-
+  const scopedT = useScopedI18n('contactPage');
   const geoAddressMap =
     'https://maps.google.com/maps?width=100%25&height=600&hl=en&q=4/15%20Lane%201,%20Z.%20Gamsakhurdia%20Ave,%20Kutaisi,%20Georgia,%204600+(My%20Business%20Name)&t=&z=14&ie=UTF8&iwloc=B&output=embed';
   const usAddressMap =
@@ -90,6 +92,20 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
 
     void trigger('signatureDataUrl');
     setShowSigningDialog(false);
+  };
+
+  const HeroTitleVariants: Variants = {
+    initial: {
+      opacity: 0,
+      y: 60,
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
   };
 
   const onFormSubmit = async ({
@@ -142,77 +158,92 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
   };
 
   return (
-    <motion.div
-      className="mt-12"
-      variants={{
-        initial: {
-          scale: 0.2,
-          opacity: 0,
-        },
-        animate: {
-          scale: 1,
-          opacity: 1,
-          transition: {
-            ease: 'easeInOut',
-            delay: 0.2,
-            duration: 0.8,
+    <>
+      <motion.h2
+        style={{ fontFamily: 'var(--font-mtavruli-bold)' }}
+        variants={HeroTitleVariants}
+        initial="initial"
+        animate="animate"
+        className="text-center text-4xl leading-tight tracking-tight md:text-[40px] lg:text-[44px]"
+      >
+        {scopedT('contactUs')}
+      </motion.h2>
+      <motion.div
+        className="mt-12"
+        variants={{
+          initial: {
+            scale: 0.2,
+            opacity: 0,
           },
-        },
-      }}
-      initial="initial"
-      animate="animate"
-    >
-      <Card className={cn('mx-auto rounded-3xl before:rounded-3xl', className)} gradient {...props}>
-        <div className="grid grid-cols-12  gap-y-8 overflow-hidden p-2 lg:gap-x-3">
-          <div className="text-muted-foreground col-span-12 flex flex-col gap-y-4 p-4 text-xs leading-relaxed lg:col-span-6">
-            {children}
-          </div>
+          animate: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+              ease: 'easeInOut',
+              delay: 0.2,
+              duration: 0.8,
+            },
+          },
+        }}
+        initial="initial"
+        animate="animate"
+      >
+        <Card
+          className={cn('mx-auto overflow-hidden rounded-3xl before:rounded-3xl', className)}
+          gradient
+          {...props}
+        >
+          <div className="flex flex-1 flex-col items-center gap-y-8 overflow-hidden p-2 md:flex-row">
+            <div className="text-muted-foreground flex flex-col gap-y-4 p-4 text-xs leading-relaxed md:w-1/2 ">
+              {children}
+            </div>
 
-          <div className="bg-foreground/5 col-span-12 flex flex-col rounded-2xl p-6 lg:col-span-6">
-            <div style={{ width: '100%' }}>
-              <iframe
-                width="100%"
-                height={600}
-                frameBorder={0}
-                scrolling="no"
-                marginHeight={0}
-                marginWidth={0}
-                src={locationIp === 'GE' ? geoAddressMap : usAddressMap}
-              ></iframe>
+            <div className="bg-foreground/5 rounded-2xl p-4 md:w-1/2 ">
+              <div>
+                <iframe
+                  width="100%"
+                  height={500}
+                  frameBorder={0}
+                  scrolling="no"
+                  marginHeight={0}
+                  marginWidth={0}
+                  src={locationIp === 'GE' ? geoAddressMap : usAddressMap}
+                ></iframe>
+              </div>
             </div>
           </div>
-        </div>
-      </Card>
+        </Card>
 
-      <Dialog open={showSigningDialog} onOpenChange={setShowSigningDialog}>
-        <DialogContent position="center">
-          <DialogHeader>
-            <DialogTitle>Add your signature</DialogTitle>
-          </DialogHeader>
+        <Dialog open={showSigningDialog} onOpenChange={setShowSigningDialog}>
+          <DialogContent position="center">
+            <DialogHeader>
+              <DialogTitle>Add your signature</DialogTitle>
+            </DialogHeader>
 
-          <DialogDescription>
-            By signing you signal your support of Documenso's mission in a <br></br>
-            <strong>non-legally binding, but heartfelt way</strong>. <br></br>
-            <br></br>You also unlock the option to purchase the early supporter plan including
-            everything we build this year for fixed price.
-          </DialogDescription>
+            <DialogDescription>
+              By signing you signal your support of Documenso's mission in a <br></br>
+              <strong>non-legally binding, but heartfelt way</strong>. <br></br>
+              <br></br>You also unlock the option to purchase the early supporter plan including
+              everything we build this year for fixed price.
+            </DialogDescription>
 
-          <SignaturePad
-            disabled={isSubmitting}
-            className="aspect-video w-full rounded-md border"
-            defaultValue={signatureDataUrl || ''}
-            onChange={setDraftSignatureDataUrl}
-          />
+            <SignaturePad
+              disabled={isSubmitting}
+              className="aspect-video w-full rounded-md border"
+              defaultValue={signatureDataUrl || ''}
+              onChange={setDraftSignatureDataUrl}
+            />
 
-          <DialogFooter>
-            <Button variant="ghost" onClick={() => setShowSigningDialog(false)}>
-              Cancel
-            </Button>
+            <DialogFooter>
+              <Button variant="ghost" onClick={() => setShowSigningDialog(false)}>
+                Cancel
+              </Button>
 
-            <Button onClick={() => onSignatureConfirmClick()}>Confirm</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </motion.div>
+              <Button onClick={() => onSignatureConfirmClick()}>Confirm</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </motion.div>
+    </>
   );
 };

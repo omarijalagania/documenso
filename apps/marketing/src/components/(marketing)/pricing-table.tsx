@@ -486,7 +486,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
       <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
         <div
           data-plan="free"
-          className="bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border px-20 py-12 shadow-lg"
+          className="bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border px-2 py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('free')}</p>
           <p className="text-primary mt-2.5 text-xl font-medium dark:invert">0₾</p>
@@ -583,7 +583,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
         <div
           data-plan="early-adopter"
-          className="border-primary bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border-2 px-20 py-12 shadow-[0px_0px_0px_4px_#E3E3E380] dark:border-[#FFEB81]"
+          className="border-primary bg-background shadow-foreground/5 flex  flex-col items-center justify-center rounded-lg border-2 px-2 py-12 shadow-[0px_0px_0px_4px_#E3E3E380] dark:border-[#FFEB81]"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('startUp')}</p>
           <div className="text-primary mt-2.5 text-xl font-medium">
@@ -642,7 +642,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
         <div
           data-plan="enterprise"
-          className="bg-background shadow-foreground/5 flex flex-col items-center justify-start rounded-lg border px-20 py-12 shadow-lg"
+          className="bg-background shadow-foreground/5 flex flex-col items-center justify-start rounded-lg border px-2 py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('business')}</p>
           <p className="text-primary mt-2.5 text-xl font-medium dark:invert">60₾ </p>

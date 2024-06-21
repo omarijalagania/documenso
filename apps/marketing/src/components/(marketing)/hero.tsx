@@ -119,7 +119,7 @@ export const Hero = ({ className, ...props }: HeroProps) => {
                 style={{
                   fontFamily: 'var(--font-mtavruli-bold)',
                 }}
-                className={cn('text-5xl uppercase')}
+                className={cn('text-5xl')}
               >
                 {scopedTDescription('signSlogan')}
               </p>

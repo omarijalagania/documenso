@@ -116,6 +116,16 @@ import { useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
 // import { StatusWidgetContainer } from './status-widget-container';
 
 export type FooterProps = HTMLAttributes<HTMLDivElement>;
@@ -123,7 +133,7 @@ export type FooterProps = HTMLAttributes<HTMLDivElement>;
 const SOCIAL_LINKS = [
   { href: 'https://twitter.com/documenso', icon: <FaXTwitter className="h-6 w-6" /> },
   { href: 'https://github.com/documenso/documenso', icon: <Facebook className="h-6 w-6" /> },
-  { href: 'https://documen.so/discord', icon: <YoutubeIcon className="h-7 w-7" /> },
+  { href: 'https://www.youtube.com/@e-Signix', icon: <YoutubeIcon className="h-7 w-7" /> },
 ];
 
 const FOOTER_LINKS = [
@@ -137,7 +147,7 @@ const FOOTER_LINKS = [
   { href: '/contact', text: 'contactUs' },
   { href: '/cookie', text: 'cookie' },
 
-  { href: '/pricing', text: 'pricing' },
+  //  { href: '/pricing', text: 'pricing' },
 ];
 
 const COUNTRIES = [
@@ -191,6 +201,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
         <div className="grid w-full max-w-sm grid-cols-2 gap-x-4 gap-y-2 md:w-auto md:gap-x-8">
           {FOOTER_LINKS.map((link, index) => (
             <Link
+              scroll={true}
               key={index}
               href={`/${currentLocale}${link.href}`}
               className="text-muted-foreground hover:text-muted-foreground/80 flex-shrink-0 break-words text-sm"

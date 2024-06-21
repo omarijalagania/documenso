@@ -16,7 +16,7 @@ export const WidgetNoForm = ({ className, children, ...props }: WidgetProps) => 
         {...props}
       >
         <div className="w-full">
-          <div className="text-muted-foreground  col-span-1 flex flex-col gap-y-4 p-4 text-xs leading-relaxed">
+          <div className="text-muted-foreground  col-span-1 flex flex-col gap-y-4 p-6 text-xs leading-relaxed">
             {children}
           </div>
         </div>

@@ -18,6 +18,30 @@ import { WidgetNoForm } from './widget-no-form';
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
 // ინტერნეტი - GPON და Peer-to-Peer (P2P)
 // ვირტუალური ასს (PBX)
 // VoIP ტელეფონი (Voice over IP)
@@ -86,8 +110,9 @@ const HeroTitleVariants: Variants = {
   },
 };
 
-function AboutContainer() {
-  const scopedT = useScopedI18n('aboutPage');
+function LawContainer() {
+  const scopedT = useScopedI18n('lawPage');
+
   return (
     <>
       <motion.h2
@@ -97,7 +122,7 @@ function AboutContainer() {
         animate="animate"
         className="text-center text-4xl leading-tight tracking-tight md:text-[40px] lg:text-[44px]"
       >
-        {scopedT('aboutUs')}
+        {scopedT('lawTitle')}
       </motion.h2>
       <motion.div
         className="mt-12"
@@ -121,20 +146,12 @@ function AboutContainer() {
       >
         <WidgetNoForm className="mt-12">
           {/* <strong>{scopedTDescription('elSign')}</strong> */}
-          <p className="w-full text-base">{scopedT('desc1')}</p>
-          <ul className="pl-5">
-            {uListArray.map((item) => (
-              <li key={item.id} className="list-disc text-base">
-                {scopedT(item.value as keyof typeof scopedT)}
-              </li>
-            ))}
-          </ul>
-          <p className="w-full text-base">{scopedT('desc2')}</p>
-          <p className="w-full text-base">{scopedT('desc3')}</p>
+
+          <div className="text-base" dangerouslySetInnerHTML={{ __html: scopedT('desc1') }} />
         </WidgetNoForm>
       </motion.div>
     </>
   );
 }
 
-export default AboutContainer;
+export default LawContainer;

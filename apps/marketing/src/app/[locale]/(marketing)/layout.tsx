@@ -71,11 +71,7 @@ export default function MarketingLayout({ children, params }: MarketingLayoutPro
           <Header className="mx-auto h-16 max-w-screen-xl px-4 md:h-20 lg:px-8" />
         </div>
 
-        <div
-          className={`relative ${
-            pathname?.includes('contact') ? 'w-[74%]' : 'max-w-screen-xl'
-          }  flex-1 px-4 sm:mx-auto lg:px-8`}
-        >
+        <div className="relative w-full max-w-screen-xl flex-1 px-4 sm:mx-auto lg:px-8">
           {children}
         </div>
 
