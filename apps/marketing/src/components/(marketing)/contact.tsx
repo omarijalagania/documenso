@@ -75,7 +75,7 @@ function ContactContainer() {
         <Input placeholder="company" />
         <Input placeholder="email" />
         <Input placeholder="phone" />
-        <Textarea placeholder="message" />
+        <Textarea className="resize-none" placeholder="message" />
 
         <div className="flex items-center justify-end space-x-2">
           <Input className="h-8 w-8" type="checkbox" />

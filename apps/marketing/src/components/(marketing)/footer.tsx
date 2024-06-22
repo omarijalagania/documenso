@@ -126,6 +126,38 @@ import { useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
 // import { StatusWidgetContainer } from './status-widget-container';
 
 export type FooterProps = HTMLAttributes<HTMLDivElement>;
@@ -201,6 +233,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
         <div className="grid w-full max-w-sm grid-cols-2 gap-x-4 gap-y-2 md:w-auto md:gap-x-8">
           {FOOTER_LINKS.map((link, index) => (
             <Link
+              onClick={() => window.scrollTo(0, 0)}
               scroll={true}
               key={index}
               href={`/${currentLocale}${link.href}`}
@@ -232,6 +265,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
           <Select>
             <SelectTrigger className="w-[180px]">
               <SelectValue
+                className="outline-none ring-0 focus:outline-none focus:ring-0"
                 placeholder={scopedT(
                   COUNTRIES.find((country) => country.value === currentLocale)
                     ?.label as keyof typeof scopedT,

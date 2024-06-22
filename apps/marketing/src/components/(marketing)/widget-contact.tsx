@@ -6,14 +6,16 @@ import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { MapPinIcon, PhoneIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import { env } from 'next-runtime-env';
 import { useForm } from 'react-hook-form';
+import { FaEnvelope } from 'react-icons/fa6';
 import { z } from 'zod';
 
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
-import { Card } from '@documenso/ui/primitives/card';
+import { Card, CardContent } from '@documenso/ui/primitives/card';
 import {
   Dialog,
   DialogContent,
@@ -167,6 +169,12 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
         className="text-center text-4xl leading-tight tracking-tight md:text-[40px] lg:text-[44px]"
       >
         {scopedT('contactUs')}
+        <p
+          style={{ fontFamily: 'var(--font-mtavruli-medium)' }}
+          className="!text-foreground mt-4 !text-lg !leading-normal"
+        >
+          {scopedT('contactUsDescription')}
+        </p>
       </motion.h2>
       <motion.div
         className="mt-12"
@@ -189,8 +197,49 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
         animate="animate"
       >
         <Card
-          className={cn('mx-auto overflow-hidden rounded-3xl before:rounded-3xl', className)}
+          className={cn('mx-auto mb-5 w-full  rounded-3xl before:rounded-3xl', className)}
           gradient
+          {...props}
+        >
+          <CardContent className="py-4">
+            <div className="flex flex-col items-start justify-around space-y-4 pl-4 md:flex-row md:items-center md:space-y-0 md:pl-0">
+              <div className="flex flex-shrink-0 items-center space-x-3">
+                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full">
+                  <PhoneIcon fill="white" size={21} color="white" />
+                </div>
+                <span>
+                  <h3 className="text-base font-semibold">ტელეფონი</h3>
+                  <p className="text-muted-foreground text-[15px]">+995 (32) 3100100</p>
+                </span>
+              </div>
+              <div className="flex flex-shrink-0 items-center space-x-3">
+                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full">
+                  <FaEnvelope size={21} color="white" />
+                </div>
+                <span>
+                  <h3 className="text-base font-semibold">ელ.ფოსტა</h3>
+                  <p className="text-muted-foreground text-[15px]">info@esignix.com</p>
+                </span>
+              </div>
+              <div className="flex flex-shrink-0 items-center space-x-3">
+                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full">
+                  <MapPinIcon fill="white" size={21} color="white" />
+                </div>
+                <span>
+                  <h3 className="text-base font-semibold">მისამართი</h3>
+                  <p className="text-muted-foreground text-[15px]">
+                    4/15 Lane 1, Z. Gamsakhurdia Ave, Kutaisi, 4600, Georgia
+                  </p>
+                </span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card
+          className={cn('mx-auto  rounded-3xl before:rounded-3xl', className)}
+          gradient
+          degrees={320}
           {...props}
         >
           <div className="flex flex-1 flex-col items-center gap-y-8 overflow-hidden p-2 md:flex-row">

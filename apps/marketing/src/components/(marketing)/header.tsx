@@ -55,7 +55,11 @@ export const Header = ({ className, ...props }: HeaderProps) => {
   return (
     <header className={cn('flex items-center justify-between', className)} {...props}>
       <div className="flex items-center space-x-4">
-        <Link href="/" className="z-10" onClick={() => setIsHamburgerMenuOpen(false)}>
+        <Link
+          href={`/${currentLocale}`}
+          className="z-10"
+          onClick={() => setIsHamburgerMenuOpen(false)}
+        >
           <Image
             src={LogoImage}
             alt="Documenso Logo"
@@ -113,12 +117,12 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           </Link>
         </Button>
         <DropdownMenu>
-          <DropdownMenuTrigger className="text-xs">
+          <DropdownMenuTrigger className="text-xs outline-none ring-0">
             {options.find((item) => item.value === currentLocale)?.label.includes('EN')
               ? 'EN'
               : 'KA'}
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="mt-3">
             {options.map((option) => (
               <DropdownMenuItem
                 className="text-xs"

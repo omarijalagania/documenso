@@ -21,7 +21,7 @@ export default {
     selectIndustry: 'Choose a category',
     login: 'Sign in',
     haveAccount: 'Already have an account?',
-    privacy: 'Terms and Conditions',
+    privacy: 'Terms & Conditions',
     and: 'and',
     politics: 'Privacy Policy',
     agree: 'I agree to the',
@@ -234,7 +234,7 @@ export default {
     contactUs: 'Contact Us',
     about: 'About Us',
     pricing: 'Plans & Pricing',
-    terms: 'Terms and Conditions',
+    terms: 'Terms & Conditions',
     privacy: 'Privacy Policy',
     security: 'Security',
     law: 'Law & Regulation',
@@ -264,6 +264,7 @@ export default {
   },
   contactPage: {
     contactUs: 'Contact Us',
+    contactUsDescription: `Please fill out the form below and we'll respond to you shortly.`,
   },
   lawPage: {
     lawTitle: 'Laws & Regulations',
@@ -273,49 +274,6 @@ export default {
   securityPage: {
     securityTitle: 'Security',
     desc1:
-      '<p class="p1"><strong>Security</strong></p><p class="p1"><span class="s1">eSignix</span> uses digital signature certificates from a trusted Certification Authority (CA) SECTIGO, which is in <a href="https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html"><span class="s2"><strong>The Adobe Approved Trust List</strong></span></a> (AATL) and comply with various cryptography standards and regulations, ensuring their security and legal validity. Sectigo&apos;s electronic signature certificates are recognized and accepted internationally, facilitating cross-border transactions and compliance with eIDAS (EU), ESIGN Act and UETA (USA) and other diverse regulatory environments.<span class="Apple-converted-space">&nbsp;</span></p><p class="p2"><br></p><p class="p1"><strong>Cryptography</strong></p><p class="p3"><span class="s1">eSignix</span> certificates ensure the authenticity, integrity, and non-repudiation of digital documents and transactions and are designed as follows:</p><ul class="ul1">    <li class="li4"><strong>Encryption Algorithms</strong>: strong encryption algorithms such as RSA (Rivest-Shamir-Adleman) and ECC (Elliptic Curve Cryptography) ensure the confidentiality and integrity of digital signatures.</li></ul><p class="p5"><br></p><ul class="ul1">    <li class="li4"><strong>Hashing Algorithm</strong>: Hashing algorithm SHA-256 (Secure Hash Algorithm 256-bit) generates hash values of electronic documents.<span class="Apple-converted-space">&nbsp;</span></li></ul><p class="p6"><br></p><p class="p5"><br></p><ul class="ul1">    <li class="li4"><strong>Cryptographic Security</strong>: Certificates are part of a PKI (Public Key Infrastructure) system, which uses a pair of cryptographic keys: a private key (kept secure by the signer) and a public key (included in the certificate and distributed), ensuring secure issuance, renewal, and revocation processes for electronic signature certificates.</li></ul><p class="p7"><br></p><p class="p3"><strong>AATL Compliance</strong></p><p class="p1">Certificates issued by Sectigo and included in the AATL are trusted by Adobe software for verifying the authenticity and integrity of digital signatures. Being part of the AATL demonstrates that AATL-compliant signatures created with Sectigo certificates are recognized and accepted in legal contexts and maintain high standards of security and compliance with international regulations for digital signatures.</p><p class="p2"><br></p><p class="p2"><br></p><p class="p2"><br></p><p class="p1"><strong>Certification &amp; Compliance</strong></p><p class="p1">eSignix utilizes Digital Ocean&apos;s VPS hosting, which is <a href="https://www.digitalocean.com/trust/certification-reports#digitalocean-s-soc-2-type-ii-and-soc-3-type-ii"><span class="s2"><strong>AICPA SOC 2 Type II and SOC 3 Type II</strong></span></a><strong>&nbsp;</strong>certified and aligns with the ISO/IEC 27001 security standards. This certification demonstrates prioritizing security and confidentiality in data processing operations and sensitive customer and company information.<span class="Apple-converted-space">&nbsp;</span></p><p class="p1">Your data is securely stored and maintained in an encrypted mode in data centers located in Frankfurt (Germany) and New York (USA). These data centers are fully compliant with various international standards, including the <a href="https://www.aicpa-cima.com/home"><span class="s2"><strong>American Institute of Certified Public Accountants (AICPA)</strong></span></a>, <a href="https://cloudsecurityalliance.org/star"><span class="s2"><strong>Cloud Security Alliance (CSA)</strong></span></a>, <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj"><span class="s2"><strong>General Data Protection Regulation (GDPR)</strong></span></a><strong>,</strong> and <a href="https://www.globalcbpr.org/"><span class="s2"><strong>Global Cross-Border Privacy Rules (CBPR)</strong></span></a>. <a href="https://commission.europa.eu/law/law-topic/data-protection_en"><span class="s2"><strong>Germany</strong></span></a> and the <a href="https://www.commerce.gov/global-cross-border-privacy-rules-declaration"><span class="s2"><strong>United States of America</strong></span></a> are recognized as countries where the transfer of personal data is safe according to these standards.<span class="Apple-converted-space">&nbsp;</span></p>',
+      '<p class="p1"><strong>Security</strong></p><p class="p1"><span class="s1">eSignix</span> uses digital signature certificates from a trusted Certification Authority (CA) SECTIGO, which is in <a href="https://helpx.adobe.com/acrobat/kb/approved-trust-list1.html"><span class="s2"><strong>The Adobe Approved Trust List</strong></span></a> (AATL) and comply with various cryptography standards and regulations, ensuring their security and legal validity. Sectigos electronic signature certificates are recognized and accepted internationally, facilitating cross-border transactions and compliance with eIDAS (EU), ESIGN Act and UETA (USA) and other diverse regulatory environments.</p><p class="p2">&nbsp;</p><p class="p1"><strong>Cryptography</strong></p><p class="p3"><span class="s1">eSignix</span> certificates ensure the authenticity, integrity, and non-repudiation of digital documents and transactions and are designed as follows:</p><ul class="ul1"><li class="li4"><strong>Encryption Algorithms</strong>: strong encryption algorithms such as RSA (Rivest-Shamir-Adleman) and ECC (Elliptic Curve Cryptography) ensure the confidentiality and integrity of digital signatures.</li><li class="li4"><strong>Hashing Algorithm</strong>: Hashing algorithm SHA-256 (Secure Hash Algorithm 256-bit) generates hash values of electronic documents.</li><li class="li4"><strong>Cryptographic Security</strong>: Certificates are part of a PKI (Public Key Infrastructure) system, which uses a pair of cryptographic keys: a private key (kept secure by the signer) and a public key (included in the certificate and distributed), ensuring secure issuance, renewal, and revocation processes for electronic signature certificates.</li></ul><p class="p5">&nbsp;</p><p class="p4"><strong>AATL Compliance</strong></p><p class="p1">Certificates issued by Sectigo and included in the AATL are trusted by Adobe software for verifying the authenticity and integrity of digital signatures. Being part of the AATL demonstrates that AATL-compliant signatures created with Sectigo certificates are recognized and accepted in legal contexts and maintain high standards of security and compliance with international regulations for digital signatures.</p><p class="p2">&nbsp;</p><p class="p1"><strong>Certification &amp; Compliance</strong></p><p class="p1">eSignix utilizes Digital Oceans VPS hosting, which is <a href="https://www.digitalocean.com/trust/certification-reports#digitalocean-s-soc-2-type-ii-and-soc-3-type-ii"><span class="s2"><strong>AICPA SOC 2 Type II and SOC 3 Type II</strong></span></a> certified and aligns with the ISO/IEC 27001 security standards. This certification demonstrates prioritizing security and confidentiality in data processing operations and sensitive customer and company information.</p><p class="p1">Your data is securely stored and maintained in an encrypted mode in data centers located in Frankfurt (Germany) and New York (USA). These data centers are fully compliant with various international standards, including the <a href="https://www.aicpa-cima.com/home"><span class="s2"><strong>American Institute of Certified Public Accountants (AICPA)</strong></span></a>, <a href="https://cloudsecurityalliance.org/star"><span class="s2"><strong>Cloud Security Alliance (CSA)</strong></span></a>, <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj"><span class="s2"><strong>General Data Protection Regulation (GDPR)</strong></span></a><strong>,</strong> and <a href="https://www.globalcbpr.org/"><span class="s2"><strong>Global Cross-Border Privacy Rules (CBPR)</strong></span></a>. <a href="https://commission.europa.eu/law/law-topic/data-protection_en"><span class="s2"><strong>Germany</strong></span></a> and the <a href="https://www.commerce.gov/global-cross-border-privacy-rules-declaration"><span class="s2"><strong>United States of America</strong></span></a> are recognized as countries where the transfer of personal data is safe according to these standards.</p>',
   },
 } as const;
-
-// const uListArray = [
-//   {
-//     id: 1,
-//     value: 'p2p',
-//   },
-//   {
-//     id: 2,
-//     value: 'pbx',
-//   },
-//   {
-//     id: 3,
-//     value: 'voip',
-//   },
-//   {
-//     id: 4,
-//     value: 'a2p',
-//   },
-//   {
-//     id: 5,
-//     value: 'colocation',
-//   },
-//   {
-//     id: 6,
-//     value: 'ixp',
-//   },
-//   {
-//     id: 7,
-//     value: 'corporateNetwork',
-//   },
-//   {
-//     id: 8,
-//     value: 'branchConnection',
-//   },
-//   {
-//     id: 9,
-//     value: 'networkSecurity',
-//   },
-//   {
-//     id: 10,
-//     value: 'opticalFiber',
-//   },
-// ];

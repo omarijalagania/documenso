@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 import { AnimatePresence, motion } from 'framer-motion';
+import { InfoIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
@@ -486,10 +487,10 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
       <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
         <div
           data-plan="free"
-          className="bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border px-2 py-12 shadow-lg"
+          className="bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border px-16  py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('free')}</p>
-          <p className="text-primary mt-2.5 text-xl font-medium dark:invert">0₾</p>
+          <p className="text-primary mt-2.5 text-xl font-medium dark:invert">უფასო</p>
 
           <p className="text-foreground mt-4 max-w-[30ch] text-center">1 {scopedT('singleUser')}</p>
 
@@ -505,14 +506,15 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
           <div className="mt-8 flex w-full flex-col divide-y">
             {freeCardArr.map((card) => (
-              <p
+              <div
                 onClick={() => openPriceDialogHandler(card.id)}
                 key={card.id}
-                className="text-foreground cursor-pointer py-4"
+                className="text-foreground flex  w-full cursor-pointer items-center justify-between py-4"
               >
                 {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
-                {scopedT(card.title as keyof typeof scopedT)}
-              </p>
+                <p>{scopedT(card.title as keyof typeof scopedT)}</p>
+                <InfoIcon size={18} />
+              </div>
             ))}
           </div>
 
@@ -583,7 +585,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
         <div
           data-plan="early-adopter"
-          className="border-primary bg-background shadow-foreground/5 flex  flex-col items-center justify-center rounded-lg border-2 px-2 py-12 shadow-[0px_0px_0px_4px_#E3E3E380] dark:border-[#FFEB81]"
+          className="border-primary bg-background shadow-foreground/5 flex  flex-col items-center justify-center rounded-lg border-2 px-16  py-12 shadow-[0px_0px_0px_4px_#E3E3E380] dark:border-[#FFEB81]"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('startUp')}</p>
           <div className="text-primary mt-2.5 text-xl font-medium">
@@ -627,14 +629,15 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
               </a>
             </p> */}
             {personalCardArr.map((card) => (
-              <p
+              <div
                 onClick={() => openStartUpDialogHandler(card.id)}
                 key={card.id}
-                className="text-foreground cursor-pointer py-4"
+                className="text-foreground flex cursor-pointer items-center justify-between py-4"
               >
                 {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
-                {scopedT(card.title as keyof typeof scopedT)}
-              </p>
+                <p>{scopedT(card.title as keyof typeof scopedT)}</p>
+                <InfoIcon size={18} />
+              </div>
             ))}
           </div>
           <div className="flex-1" />
@@ -642,7 +645,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
         <div
           data-plan="enterprise"
-          className="bg-background shadow-foreground/5 flex flex-col items-center justify-start rounded-lg border px-2 py-12 shadow-lg"
+          className="bg-background shadow-foreground/5 flex flex-col items-center justify-start rounded-lg border px-16  py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('business')}</p>
           <p className="text-primary mt-2.5 text-xl font-medium dark:invert">60₾ </p>
@@ -660,14 +663,15 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
 
           <div className="mt-8 flex w-full flex-col divide-y">
             {businessCardArr.map((card) => (
-              <p
+              <div
                 onClick={() => openBusinessDialogHandler(card.id)}
                 key={card.id}
-                className="text-foreground cursor-pointer py-4"
+                className="text-foreground flex cursor-pointer items-center justify-between py-4"
               >
                 {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
-                {scopedT(card.title as keyof typeof scopedT)}
-              </p>
+                <p>{scopedT(card.title as keyof typeof scopedT)}</p>
+                <InfoIcon size={18} />
+              </div>
             ))}
           </div>
         </div>
