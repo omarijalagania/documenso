@@ -30,7 +30,6 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
   const event = usePlausible();
   const scopedT = useScopedI18n('pricing');
   const [showSigningDialog, setShowSigningDialog] = useState(false);
-
   const [showStartUpDialog, setShowStartUpDialog] = useState(false);
   const [dialogStartId, setDialogStartId] = useState<number | null>(null);
 
@@ -513,7 +512,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
               >
                 {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
                 <p>{scopedT(card.title as keyof typeof scopedT)}</p>
-                <InfoIcon size={18} />
+                <InfoIcon className="text-primary dark:invert" size={18} />
               </div>
             ))}
           </div>
@@ -636,7 +635,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
               >
                 {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
                 <p>{scopedT(card.title as keyof typeof scopedT)}</p>
-                <InfoIcon size={18} />
+                <InfoIcon className="text-primary dark:invert" size={18} />
               </div>
             ))}
           </div>
@@ -670,7 +669,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
               >
                 {/* eslint-disable-next-line @typescript-eslint/consistent-type-assertions */}
                 <p>{scopedT(card.title as keyof typeof scopedT)}</p>
-                <InfoIcon size={18} />
+                <InfoIcon className="text-primary dark:invert" size={18} />
               </div>
             ))}
           </div>

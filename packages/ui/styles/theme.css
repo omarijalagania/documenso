@@ -88,6 +88,15 @@
     --radius: 0.5rem;
 
     --warning: 54 96% 45%;
+
+    /* Dark theme styles */
+    p strong {
+      color: white; /* White for dark themes */
+    }
+    span.s3,
+    span.s1 {
+      color: #ffeb81; /* Specific colors for dark themes */
+    }
   }
 }
 
