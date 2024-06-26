@@ -1,6 +1,14 @@
+/* dark mode  #FFEB81 */
+
 p.p1 {
   margin: 0px 0px 5px 0px;
   text-align: justify;
+}
+
+p strong {
+  font-weight: bold;
+  font-size: larger;
+  color: black;
 }
 
 p.p2 {
@@ -26,7 +34,7 @@ span.s1 {
 }
 
 span.s2 {
-  font: 12px Symbol;
+  font: 12px;
 }
 
 span.s3 {
@@ -97,7 +105,7 @@ span.s1 {
 }
 
 span.s2 {
-  font: 12px Symbol;
+  font: 12px;
 }
 
 span.s3 {
@@ -107,5 +115,5 @@ span.s3 {
 
 ul.ul1 {
   list-style-type: disc;
-  padding-left: 25px;
+  padding-left: 18px;
 }

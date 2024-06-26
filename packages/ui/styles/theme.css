@@ -94,7 +94,8 @@
       color: white; /* White for dark themes */
     }
     span.s3,
-    span.s1 {
+    span.s1,
+    span.s5 {
       color: #ffeb81; /* Specific colors for dark themes */
     }
   }

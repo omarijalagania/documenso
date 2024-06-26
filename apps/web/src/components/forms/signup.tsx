@@ -3,9 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
-import { FcGoogle } from 'react-icons/fc';
 import { z } from 'zod';
 
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
@@ -24,7 +22,6 @@ import {
 } from '@documenso/ui/primitives/form/form';
 import { Input } from '@documenso/ui/primitives/input';
 import { PasswordInput } from '@documenso/ui/primitives/password-input';
-import { SignaturePad } from '@documenso/ui/primitives/signature-pad';
 import { useToast } from '@documenso/ui/primitives/use-toast';
 
 const SIGN_UP_REDIRECT_PATH = '/documents';
@@ -114,31 +111,31 @@ export const SignUpForm = ({
     }
   };
 
-  const onSignUpWithGoogleClick = async () => {
-    try {
-      await signIn('google', { callbackUrl: SIGN_UP_REDIRECT_PATH });
-    } catch (err) {
-      toast({
-        title: 'An unknown error occurred',
-        description:
-          'We encountered an unknown error while attempting to sign you Up. Please try again later.',
-        variant: 'destructive',
-      });
-    }
-  };
+  // const onSignUpWithGoogleClick = async () => {
+  //   try {
+  //     await signIn('google', { callbackUrl: SIGN_UP_REDIRECT_PATH });
+  //   } catch (err) {
+  //     toast({
+  //       title: 'An unknown error occurred',
+  //       description:
+  //         'We encountered an unknown error while attempting to sign you Up. Please try again later.',
+  //       variant: 'destructive',
+  //     });
+  //   }
+  // };
 
-  const onSignUpWithOIDCClick = async () => {
-    try {
-      await signIn('oidc', { callbackUrl: SIGN_UP_REDIRECT_PATH });
-    } catch (err) {
-      toast({
-        title: 'An unknown error occurred',
-        description:
-          'We encountered an unknown error while attempting to sign you Up. Please try again later.',
-        variant: 'destructive',
-      });
-    }
-  };
+  // const onSignUpWithOIDCClick = async () => {
+  //   try {
+  //     await signIn('oidc', { callbackUrl: SIGN_UP_REDIRECT_PATH });
+  //   } catch (err) {
+  //     toast({
+  //       title: 'An unknown error occurred',
+  //       description:
+  //         'We encountered an unknown error while attempting to sign you Up. Please try again later.',
+  //       variant: 'destructive',
+  //     });
+  //   }
+  // };
 
   return (
     <Form {...form}>
@@ -188,26 +185,6 @@ export const SignUpForm = ({
               </FormItem>
             )}
           />
-
-          <FormField
-            control={form.control}
-            name="signature"
-            render={({ field: { onChange } }) => (
-              <FormItem>
-                <FormLabel>Sign Here</FormLabel>
-                <FormControl>
-                  <SignaturePad
-                    className="h-36 w-full"
-                    disabled={isSubmitting}
-                    containerClassName="mt-2 rounded-lg border bg-background"
-                    onChange={(v) => onChange(v ?? '')}
-                  />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </fieldset>
 
         <Button
@@ -218,50 +195,6 @@ export const SignUpForm = ({
         >
           {isSubmitting ? 'Signing up...' : 'Sign Up'}
         </Button>
-
-        {isGoogleSSOEnabled && (
-          <>
-            <div className="relative flex items-center justify-center gap-x-4 py-2 text-xs uppercase">
-              <div className="bg-border h-px flex-1" />
-              <span className="text-muted-foreground bg-transparent">Or</span>
-              <div className="bg-border h-px flex-1" />
-            </div>
-
-            <Button
-              type="button"
-              size="lg"
-              variant={'outline'}
-              className="bg-background text-muted-foreground border"
-              disabled={isSubmitting}
-              onClick={onSignUpWithGoogleClick}
-            >
-              <FcGoogle className="mr-2 h-5 w-5" />
-              Sign Up with Google
-            </Button>
-          </>
-        )}
-
-        {isOIDCSSOEnabled && (
-          <>
-            <div className="relative flex items-center justify-center gap-x-4 py-2 text-xs uppercase">
-              <div className="bg-border h-px flex-1" />
-              <span className="text-muted-foreground bg-transparent">Or</span>
-              <div className="bg-border h-px flex-1" />
-            </div>
-
-            <Button
-              type="button"
-              size="lg"
-              variant={'outline'}
-              className="bg-background text-muted-foreground border"
-              disabled={isSubmitting}
-              onClick={onSignUpWithOIDCClick}
-            >
-              <FcGoogle className="mr-2 h-5 w-5" />
-              Sign Up with OIDC
-            </Button>
-          </>
-        )}
       </form>
     </Form>
   );
