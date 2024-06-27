@@ -2,17 +2,17 @@
 
 import { useEffect, useState } from 'react';
 
-function useFetchLocation() {
-  const [locationIp, setLocationIp] = useState<string>('');
+function useFetchIp() {
+  const [locationIpNoLocal, setLocationIpNoLocal] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const locationCheck = localStorage.getItem('locationCheck');
+    //const locationCheck = localStorage.getItem('locationCheck');
 
     async function getLocation() {
-      if (locationCheck === 'true') {
-        return;
-      }
+      // if (locationCheck === 'true') {
+      //   return;
+      // }
 
       try {
         setLoading(true);
@@ -24,12 +24,12 @@ function useFetchLocation() {
         });
 
         const data = await res.json();
-        localStorage.setItem('locationCheck', 'true');
+        // localStorage.setItem('locationCheck', 'true');
         const countryCode = data.CountryCode;
-        setLocationIp(countryCode);
+        setLocationIpNoLocal(countryCode);
         setLoading(false);
-        const lang = countryCode === 'GE' ? 'ka' : 'en';
-        localStorage.setItem('step-1', JSON.stringify({ language: lang }));
+        //const lang = countryCode === 'GE' ? 'ka' : 'en';
+        // localStorage.setItem('step-1', JSON.stringify({ language: lang }));
       } catch (error) {
         console.error('Error:', error);
         setLoading(false);
@@ -40,9 +40,9 @@ function useFetchLocation() {
   }, []);
 
   return {
-    locationIp,
+    locationIpNoLocal,
     loading,
   };
 }
 
-export default useFetchLocation;
+export default useFetchIp;

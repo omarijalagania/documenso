@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 'use client';
 
-import type { HTMLAttributes } from 'react';
+import { type HTMLAttributes, useEffect } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,139 +20,8 @@ import {
 } from '@documenso/ui/primitives/select';
 import { ThemeSwitcher } from '@documenso/ui/primitives/theme-switcher';
 
-import { useCurrentLocale, useScopedI18n } from '~/locales/client';
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
+import useFetchLocation from '~/hooks/useFetchLocation';
+import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
@@ -184,12 +53,12 @@ const FOOTER_LINKS = [
 
 const COUNTRIES = [
   {
-    id: 1,
+    id: '1',
     value: 'ka',
     label: 'ka',
   },
   {
-    id: 2,
+    id: '2',
     value: 'en',
     label: 'en',
   },
@@ -198,6 +67,15 @@ const COUNTRIES = [
 export const Footer = ({ className, ...props }: FooterProps) => {
   const scopedT = useScopedI18n('footer');
   const currentLocale = useCurrentLocale();
+  const changeLocale = useChangeLocale();
+  const { locationIp } = useFetchLocation();
+
+  useEffect(() => {
+    if (locationIp === 'GE') {
+      changeLocale('ka');
+    }
+  }, [changeLocale, locationIp]);
+
   return (
     <div className={cn('border-t py-12', className)} {...props}>
       <div className="mx-auto flex w-full max-w-screen-xl flex-wrap items-start justify-between gap-8 px-8">
@@ -262,7 +140,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
         </p>
 
         <div className="flex flex-wrap space-x-8">
-          <Select>
+          <Select onValueChange={(value) => changeLocale(value as 'ka' | 'en')}>
             <SelectTrigger className="w-[180px]">
               <SelectValue
                 className="outline-none ring-0 focus:outline-none focus:ring-0"

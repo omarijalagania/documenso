@@ -18,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from '@documenso/ui/primitives/dropdown-menu';
 
+import useFetchLocation from '~/hooks/useFetchLocation';
 import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 import { HamburgerMenu } from './mobile-hamburger';
@@ -28,11 +29,12 @@ export type HeaderProps = HTMLAttributes<HTMLElement>;
 export const Header = ({ className, ...props }: HeaderProps) => {
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const scopedT = useScopedI18n('auth');
+  const { locationIp } = useFetchLocation();
   const currentLocale = useCurrentLocale();
   const changeLocale = useChangeLocale();
   const { getFlag } = useFeatureFlags();
 
-  const options = [
+  let options = [
     {
       id: 1,
       value: 'en',
@@ -44,6 +46,10 @@ export const Header = ({ className, ...props }: HeaderProps) => {
       label: 'ქართული - KA',
     },
   ];
+
+  if (locationIp !== 'GE') {
+    options = options.filter((option) => option.value !== 'ka');
+  }
 
   const changeLanguage = (locale: string) => {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions

@@ -20,11 +20,391 @@ import {
   DialogTitle,
 } from '@documenso/ui/primitives/dialog';
 
-import { useScopedI18n } from '~/locales/client';
+import useFetchIp from '~/hooks/useFetchIp';
+import { useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 export type PricingTableProps = HTMLAttributes<HTMLDivElement>;
 
 const SELECTED_PLAN_BAR_LAYOUT_ID = 'selected-plan-bar';
+
+const businessDescriptionCardArr = [
+  {
+    id: 1,
+    description: 'businessUsers',
+  },
+  {
+    id: 2,
+    description: 'businessCompanies',
+  },
+  {
+    id: 3,
+    description: 'businessUserAdd',
+  },
+  {
+    id: 4,
+    description: 'businessRoles',
+  },
+  {
+    id: 5,
+    description: 'businessSendDocuments',
+  },
+  {
+    id: 6,
+    description: 'businessTemplates',
+  },
+  {
+    id: 7,
+    description: 'businessFolders',
+  },
+  {
+    id: 8,
+    description: 'businessShareDocs',
+  },
+  {
+    id: 9,
+    description: 'businessContacts',
+  },
+  {
+    id: 10,
+    description: 'businessPartners',
+  },
+  {
+    id: 11,
+    description: 'businessSignOrder',
+  },
+  {
+    id: 12,
+    description: 'businessParallel',
+  },
+  {
+    id: 13,
+    description: 'businessPerson',
+  },
+  {
+    id: 14,
+    description: 'businessDelegation',
+  },
+  {
+    id: 15,
+    description: 'businessScheduled',
+  },
+  {
+    id: 16,
+    description: 'businessReminders',
+  },
+  {
+    id: 17,
+    description: 'businessReports',
+  },
+  {
+    id: 18,
+    description: 'businessIdVerification',
+  },
+  {
+    id: 19,
+    description: 'businessAuth',
+  },
+  {
+    id: 20,
+    description: 'businessTwoFa',
+  },
+];
+
+const businessCardArr = [
+  {
+    id: 1,
+    title: 'users',
+  },
+  {
+    id: 2,
+    title: 'companies',
+  },
+
+  {
+    id: 3,
+    title: 'addUser',
+  },
+  {
+    id: 4,
+    title: 'userRoles',
+  },
+  {
+    id: 5,
+    title: 'documentSending',
+  },
+  {
+    id: 6,
+    title: 'templates',
+  },
+  {
+    id: 7,
+    title: 'folders',
+  },
+  {
+    id: 8,
+    title: 'share',
+  },
+  {
+    id: 9,
+    title: 'contacts',
+  },
+  {
+    id: 10,
+    title: 'partners',
+  },
+  {
+    id: 11,
+    title: 'signingOrder',
+  },
+  {
+    id: 12,
+    title: 'parallelSigning',
+  },
+  {
+    id: 13,
+    title: 'personSign',
+  },
+  {
+    id: 14,
+    title: 'signDelegation',
+  },
+  {
+    id: 15,
+    title: 'sendPlan',
+  },
+  {
+    id: 16,
+    title: 'reminders',
+  },
+  {
+    id: 17,
+    title: 'reports',
+  },
+  {
+    id: 18,
+    title: 'idVerification',
+  },
+  {
+    id: 19,
+    title: 'authentication',
+  },
+  {
+    id: 20,
+    title: 'twoFa',
+  },
+];
+
+const personalCardArrDescription = [
+  {
+    id: 1,
+    description: 'personUserDescription',
+  },
+  {
+    id: 2,
+    description: 'personalCompaniesDescription',
+  },
+  {
+    id: 3,
+    description: 'personalUserAddDescription',
+  },
+  {
+    id: 4,
+    description: 'personalRolesDescription',
+  },
+  {
+    id: 5,
+    description: 'personalSendDocumentsDescription',
+  },
+  {
+    id: 6,
+    description: 'personalTemplatesDescription',
+  },
+  {
+    id: 7,
+    description: 'personalFoldersDescription',
+  },
+  {
+    id: 8,
+    description: 'personalContactsDescription',
+  },
+  {
+    id: 9,
+    description: 'personalPartnersDescription',
+  },
+  {
+    id: 10,
+    description: 'personalSignOrderDescription',
+  },
+  {
+    id: 11,
+    description: 'personalParallelDescription',
+  },
+  {
+    id: 12,
+    description: 'personalPersonDescription',
+  },
+  {
+    id: 13,
+    description: 'personalRemindersDescription',
+  },
+  {
+    id: 14,
+    description: 'personalReportsDescription',
+  },
+  {
+    id: 15,
+    description: 'personalIdVerificationDescription',
+  },
+  {
+    id: 16,
+    description: 'personalAuthDescription',
+  },
+  {
+    id: 17,
+    description: 'personalTwoFaDescription',
+  },
+];
+
+const personalCardArr = [
+  {
+    id: 1,
+    title: 'users',
+  },
+  {
+    id: 2,
+    title: 'companies',
+  },
+  {
+    id: 3,
+    title: 'addUser',
+  },
+  {
+    id: 4,
+    title: 'userRoles',
+  },
+  {
+    id: 5,
+    title: 'documentSending',
+  },
+  {
+    id: 6,
+    title: 'templates',
+  },
+  {
+    id: 7,
+    title: 'folders',
+  },
+  {
+    id: 8,
+    title: 'contacts',
+  },
+  {
+    id: 9,
+    title: 'partners',
+  },
+  {
+    id: 10,
+    title: 'signingOrder',
+  },
+  {
+    id: 11,
+    title: 'parallelSigning',
+  },
+  {
+    id: 12,
+    title: 'personSign',
+  },
+  {
+    id: 13,
+    title: 'reminders',
+  },
+  {
+    id: 14,
+    title: 'reports',
+  },
+  {
+    id: 15,
+    title: 'idVerification',
+  },
+  {
+    id: 16,
+    title: 'authentication',
+  },
+  {
+    id: 17,
+    title: 'twoFa',
+  },
+];
+
+const freeCardArr = [
+  {
+    id: 1,
+    title: 'users',
+  },
+  {
+    id: 2,
+    title: 'documentSending',
+  },
+  {
+    id: 3,
+    title: 'folders',
+  },
+  {
+    id: 4,
+    title: 'contacts',
+  },
+  {
+    id: 5,
+    title: 'reports',
+  },
+  {
+    id: 6,
+    title: 'idVerification',
+  },
+  {
+    id: 7,
+    title: 'authentication',
+  },
+  {
+    id: 8,
+    title: 'twoFa',
+  },
+];
+
+const freeCardDescription = [
+  {
+    id: 1,
+    description: 'userDescription',
+  },
+  {
+    id: 2,
+    description: 'documentSendingDescription',
+  },
+  {
+    id: 3,
+    description: 'foldersDescription',
+  },
+  {
+    id: 4,
+    description: 'contactsDescription',
+  },
+  {
+    id: 5,
+    description: 'reportsDescription',
+  },
+  {
+    id: 6,
+    description: 'idVerificationDescription',
+  },
+  {
+    id: 7,
+    description: 'authenticationDescription',
+  },
+  {
+    id: 8,
+    description: 'twoFaDescription',
+  },
+];
 
 export const PricingTable = ({ className, ...props }: PricingTableProps) => {
   const event = usePlausible();
@@ -33,9 +413,10 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
   const [showStartUpDialog, setShowStartUpDialog] = useState(false);
   const [dialogStartId, setDialogStartId] = useState<number | null>(null);
 
+  const { locationIpNoLocal } = useFetchIp();
   const [showBusinessDialog, setShowBusinessDialog] = useState(false);
   const [dialogBusinessId, setDialogBusinessId] = useState<number | null>(null);
-
+  const currentLocale = useCurrentLocale();
   const [dialogId, setDialogId] = useState<number | null>(null);
 
   const openPriceDialogHandler = (id: number) => {
@@ -54,385 +435,6 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
   };
 
   const [period, setPeriod] = useState<'MONTHLY' | 'YEARLY'>('MONTHLY');
-
-  const businessDescriptionCardArr = [
-    {
-      id: 1,
-      description: 'businessUsers',
-    },
-    {
-      id: 2,
-      description: 'businessCompanies',
-    },
-    {
-      id: 3,
-      description: 'businessUserAdd',
-    },
-    {
-      id: 4,
-      description: 'businessRoles',
-    },
-    {
-      id: 5,
-      description: 'businessSendDocuments',
-    },
-    {
-      id: 6,
-      description: 'businessTemplates',
-    },
-    {
-      id: 7,
-      description: 'businessFolders',
-    },
-    {
-      id: 8,
-      description: 'businessShareDocs',
-    },
-    {
-      id: 9,
-      description: 'businessContacts',
-    },
-    {
-      id: 10,
-      description: 'businessPartners',
-    },
-    {
-      id: 11,
-      description: 'businessSignOrder',
-    },
-    {
-      id: 12,
-      description: 'businessParallel',
-    },
-    {
-      id: 13,
-      description: 'businessPerson',
-    },
-    {
-      id: 14,
-      description: 'businessDelegation',
-    },
-    {
-      id: 15,
-      description: 'businessScheduled',
-    },
-    {
-      id: 16,
-      description: 'businessReminders',
-    },
-    {
-      id: 17,
-      description: 'businessReports',
-    },
-    {
-      id: 18,
-      description: 'businessIdVerification',
-    },
-    {
-      id: 19,
-      description: 'businessAuth',
-    },
-    {
-      id: 20,
-      description: 'businessTwoFa',
-    },
-  ];
-
-  const businessCardArr = [
-    {
-      id: 1,
-      title: 'users',
-    },
-    {
-      id: 2,
-      title: 'companies',
-    },
-
-    {
-      id: 3,
-      title: 'addUser',
-    },
-    {
-      id: 4,
-      title: 'userRoles',
-    },
-    {
-      id: 5,
-      title: 'documentSending',
-    },
-    {
-      id: 6,
-      title: 'templates',
-    },
-    {
-      id: 7,
-      title: 'folders',
-    },
-    {
-      id: 8,
-      title: 'share',
-    },
-    {
-      id: 9,
-      title: 'contacts',
-    },
-    {
-      id: 10,
-      title: 'partners',
-    },
-    {
-      id: 11,
-      title: 'signingOrder',
-    },
-    {
-      id: 12,
-      title: 'parallelSigning',
-    },
-    {
-      id: 13,
-      title: 'personSign',
-    },
-    {
-      id: 14,
-      title: 'signDelegation',
-    },
-    {
-      id: 15,
-      title: 'sendPlan',
-    },
-    {
-      id: 16,
-      title: 'reminders',
-    },
-    {
-      id: 17,
-      title: 'reports',
-    },
-    {
-      id: 18,
-      title: 'idVerification',
-    },
-    {
-      id: 19,
-      title: 'authentication',
-    },
-    {
-      id: 20,
-      title: 'twoFa',
-    },
-  ];
-
-  const personalCardArrDescription = [
-    {
-      id: 1,
-      description: 'personUserDescription',
-    },
-    {
-      id: 2,
-      description: 'personalCompaniesDescription',
-    },
-    {
-      id: 3,
-      description: 'personalUserAddDescription',
-    },
-    {
-      id: 4,
-      description: 'personalRolesDescription',
-    },
-    {
-      id: 5,
-      description: 'personalSendDocumentsDescription',
-    },
-    {
-      id: 6,
-      description: 'personalTemplatesDescription',
-    },
-    {
-      id: 7,
-      description: 'personalFoldersDescription',
-    },
-    {
-      id: 8,
-      description: 'personalContactsDescription',
-    },
-    {
-      id: 9,
-      description: 'personalPartnersDescription',
-    },
-    {
-      id: 10,
-      description: 'personalSignOrderDescription',
-    },
-    {
-      id: 11,
-      description: 'personalParallelDescription',
-    },
-    {
-      id: 12,
-      description: 'personalPersonDescription',
-    },
-    {
-      id: 13,
-      description: 'personalRemindersDescription',
-    },
-    {
-      id: 14,
-      description: 'personalReportsDescription',
-    },
-    {
-      id: 15,
-      description: 'personalIdVerificationDescription',
-    },
-    {
-      id: 16,
-      description: 'personalAuthDescription',
-    },
-    {
-      id: 17,
-      description: 'personalTwoFaDescription',
-    },
-  ];
-
-  const personalCardArr = [
-    {
-      id: 1,
-      title: 'users',
-    },
-    {
-      id: 2,
-      title: 'companies',
-    },
-    {
-      id: 3,
-      title: 'addUser',
-    },
-    {
-      id: 4,
-      title: 'userRoles',
-    },
-    {
-      id: 5,
-      title: 'documentSending',
-    },
-    {
-      id: 6,
-      title: 'templates',
-    },
-    {
-      id: 7,
-      title: 'folders',
-    },
-    {
-      id: 8,
-      title: 'contacts',
-    },
-    {
-      id: 9,
-      title: 'partners',
-    },
-    {
-      id: 10,
-      title: 'signingOrder',
-    },
-    {
-      id: 11,
-      title: 'parallelSigning',
-    },
-    {
-      id: 12,
-      title: 'personSign',
-    },
-    {
-      id: 13,
-      title: 'reminders',
-    },
-    {
-      id: 14,
-      title: 'reports',
-    },
-    {
-      id: 15,
-      title: 'idVerification',
-    },
-    {
-      id: 16,
-      title: 'authentication',
-    },
-    {
-      id: 17,
-      title: 'twoFa',
-    },
-  ];
-
-  const freeCardArr = [
-    {
-      id: 1,
-      title: 'users',
-    },
-    {
-      id: 2,
-      title: 'documentSending',
-    },
-    {
-      id: 3,
-      title: 'folders',
-    },
-    {
-      id: 4,
-      title: 'contacts',
-    },
-    {
-      id: 5,
-      title: 'reports',
-    },
-    {
-      id: 6,
-      title: 'idVerification',
-    },
-    {
-      id: 7,
-      title: 'authentication',
-    },
-    {
-      id: 8,
-      title: 'twoFa',
-    },
-  ];
-
-  const freeCardDescription = [
-    {
-      id: 1,
-      description: 'userDescription',
-    },
-    {
-      id: 2,
-      description: 'documentSendingDescription',
-    },
-    {
-      id: 3,
-      description: 'foldersDescription',
-    },
-    {
-      id: 4,
-      description: 'contactsDescription',
-    },
-    {
-      id: 5,
-      description: 'reportsDescription',
-    },
-    {
-      id: 6,
-      description: 'idVerificationDescription',
-    },
-    {
-      id: 7,
-      description: 'authenticationDescription',
-    },
-    {
-      id: 8,
-      description: 'twoFaDescription',
-    },
-  ];
 
   return (
     <div className={cn('', className)} {...props}>
@@ -471,7 +473,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           >
             {scopedT('yearly')}
             <div className="bg-muted text-foreground block rounded-full px-2 py-0.5 text-xs">
-              {scopedT('save')} $60
+              {scopedT('save')} 20%
             </div>
             {period === 'YEARLY' && (
               <motion.div
@@ -489,7 +491,7 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           className="bg-background shadow-foreground/5 flex flex-col items-center justify-center rounded-lg border px-16  py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('free')}</p>
-          <p className="text-primary mt-2.5 text-xl font-medium dark:invert">უფასო</p>
+          <p className="text-primary mt-2.5 text-xl font-medium dark:invert">{scopedT('basic')}</p>
 
           <p className="text-foreground mt-4 max-w-[30ch] text-center">1 {scopedT('singleUser')}</p>
 
@@ -588,18 +590,18 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('startUp')}</p>
           <div className="text-primary mt-2.5 text-xl font-medium">
-            <AnimatePresence mode="wait">
-              {period === 'MONTHLY' && (
-                <motion.div className="dark:invert" layoutId="pricing">
-                  30₾
-                </motion.div>
-              )}
-              {period === 'YEARLY' && (
-                <motion.div className="dark:invert" layoutId="pricing">
-                  $300
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {period === 'MONTHLY' && (
+              <div className="dark:invert">
+                {locationIpNoLocal === 'GE' && '45₾'}
+                {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$15'}
+              </div>
+            )}
+            {period === 'YEARLY' && (
+              <div className="dark:invert">
+                {locationIpNoLocal === 'GE' && '36₾'}
+                {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$12'}
+              </div>
+            )}
           </div>
 
           <p className="text-foreground mt-4 max-w-[30ch] text-center">1 {scopedT('singleUser')}</p>
@@ -647,7 +649,24 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           className="bg-background shadow-foreground/5 flex flex-col items-center justify-start rounded-lg border px-16  py-12 shadow-lg"
         >
           <p className="text-foreground text-4xl font-medium">{scopedT('business')}</p>
-          <p className="text-primary mt-2.5 text-xl font-medium dark:invert">60₾ </p>
+          {/* <p className="text-primary mt-2.5 text-xl font-medium dark:invert">
+            {locationIpNoLocal === 'GE' && '75₾'}
+            {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$25'}
+          </p> */}
+          <div className="text-primary mt-2.5 text-xl font-medium">
+            {period === 'MONTHLY' && (
+              <div className="dark:invert">
+                {locationIpNoLocal === 'GE' && '75₾'}
+                {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$25'}
+              </div>
+            )}
+            {period === 'YEARLY' && (
+              <div className="dark:invert">
+                {locationIpNoLocal === 'GE' && '60₾'}
+                {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$20'}
+              </div>
+            )}
+          </div>
 
           <p className="text-foreground mt-4 max-w-[30ch] text-center">1 {scopedT('singleUser')}</p>
 
