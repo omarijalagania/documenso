@@ -265,6 +265,9 @@ export default {
   contactPage: {
     contactUs: 'Contact Us',
     contactUsDescription: `Please fill out the form below and we'll respond to you shortly.`,
+    phone: 'Phone',
+    email: 'Email',
+    address: 'Address',
   },
   lawPage: {
     lawTitle: 'Laws & Regulations',

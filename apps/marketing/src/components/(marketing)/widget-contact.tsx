@@ -9,6 +9,7 @@ import type { Variants } from 'framer-motion';
 import { MapPinIcon, PhoneIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 import { env } from 'next-runtime-env';
+import { useTheme } from 'next-themes';
 import { useForm } from 'react-hook-form';
 import { FaEnvelope } from 'react-icons/fa6';
 import { z } from 'zod';
@@ -29,7 +30,7 @@ import { useToast } from '@documenso/ui/primitives/use-toast';
 
 import { claimPlan } from '~/api/claim-plan/fetcher';
 import useFetchLocation from '~/hooks/useFetchLocation';
-import { useScopedI18n } from '~/locales/client';
+import { useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 const ZWidgetFormSchema = z
   .object({
@@ -56,7 +57,7 @@ export type WidgetProps = HTMLAttributes<HTMLDivElement>;
 export const WidgetContact = ({ className, children, ...props }: WidgetProps) => {
   const { toast } = useToast();
   const event = usePlausible();
-  const { locationIp } = useFetchLocation();
+  const { theme } = useTheme();
   const [showSigningDialog, setShowSigningDialog] = useState(false);
   const [draftSignatureDataUrl, setDraftSignatureDataUrl] = useState<string | null>(null);
   const scopedT = useScopedI18n('contactPage');
@@ -65,7 +66,6 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
   const usAddressMap =
     'https://maps.google.com/maps?width=100%25&height=600&hl=en&q=1414%20E%2012th%20St,%20Brooklyn,%20NY%2011230+(My%20Business%20Name)&t=&z=14&ie=UTF8&iwloc=B&output=embed';
 
-  console.log('locationIp', locationIp);
   const {
     control,
     register,
@@ -87,7 +87,7 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
 
   const signatureDataUrl = watch('signatureDataUrl');
   const signatureText = watch('signatureText');
-
+  const { locationIp } = useFetchLocation();
   const onSignatureConfirmClick = () => {
     setValue('signatureDataUrl', draftSignatureDataUrl);
     setValue('signatureText', '');
@@ -96,6 +96,7 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
     setShowSigningDialog(false);
   };
 
+  const currentLocale = useCurrentLocale();
   const HeroTitleVariants: Variants = {
     initial: {
       opacity: 0,
@@ -204,31 +205,44 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
           <CardContent className="py-4">
             <div className="flex flex-col items-start justify-around space-y-4 pl-4 md:flex-row md:items-center md:space-y-0 md:pl-0">
               <div className="flex flex-shrink-0 items-center space-x-3">
-                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full">
-                  <PhoneIcon fill="white" size={21} color="white" />
+                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full dark:bg-[#ffeb81]">
+                  <PhoneIcon
+                    fill={theme === 'dark' ? 'hsl(230.5, 100%, 24.7%)' : 'white'}
+                    color={theme === 'dark' ? 'hsl(230.5, 100%, 24.7%)' : 'white'}
+                    size={21}
+                  />
                 </div>
                 <span>
-                  <h3 className="text-base font-semibold">ტელეფონი</h3>
+                  <h3 className="text-base font-semibold">{scopedT('phone')}</h3>
                   <p className="text-muted-foreground text-[15px]">+995 (32) 3100100</p>
                 </span>
               </div>
               <div className="flex flex-shrink-0 items-center space-x-3">
-                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full">
-                  <FaEnvelope size={21} color="white" />
+                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full dark:bg-[#ffeb81]">
+                  <FaEnvelope
+                    color={theme === 'dark' ? 'hsl(230.5, 100%, 24.7%)' : 'white'}
+                    size={21}
+                  />
                 </div>
                 <span>
-                  <h3 className="text-base font-semibold">ელ.ფოსტა</h3>
+                  <h3 className="text-base font-semibold">{scopedT('email')}</h3>
                   <p className="text-muted-foreground text-[15px]">info@esignix.com</p>
                 </span>
               </div>
               <div className="flex flex-shrink-0 items-center space-x-3">
-                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full">
-                  <MapPinIcon fill="white" size={21} color="white" />
+                <div className="bg-primary flex h-[45px] w-[45px] flex-shrink-0 items-center justify-center rounded-full dark:bg-[#ffeb81]">
+                  <MapPinIcon
+                    fill={theme === 'dark' ? 'hsl(230.5, 100%, 24.7%)' : 'white'}
+                    color={theme === 'dark' ? 'hsl(230.5, 100%, 24.7%)' : 'white'}
+                    size={21}
+                  />
                 </div>
                 <span>
-                  <h3 className="text-base font-semibold">მისამართი</h3>
+                  <h3 className="text-base font-semibold">{scopedT('address')}</h3>
                   <p className="text-muted-foreground text-[15px]">
-                    4/15 Lane 1, Z. Gamsakhurdia Ave, Kutaisi, 4600, Georgia
+                    {currentLocale === 'ka'
+                      ? '4/15 Lane 1, Z. Gamsakhurdia Ave, Kutaisi, 4600, Georgia'
+                      : '1414 E 12th St, Brooklyn, NY 11230'}
                   </p>
                 </span>
               </div>

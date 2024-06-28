@@ -277,6 +277,9 @@ export default {
   contactPage: {
     contactUs: 'დაგვიკავშირდით',
     contactUsDescription: 'გთხოვთ შეავსოთ ქვემოთ მოცემული ფორმა. ჩვენ მალე გიპასუხებთ.',
+    phone: 'ტელეფონი',
+    email: 'ელ. ფოსტა',
+    address: 'მისამართი',
   },
   lawPage: {
     lawTitle: 'კანონმდებლობა და რეგულაციები',
