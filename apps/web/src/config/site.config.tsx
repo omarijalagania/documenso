@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import type { OpenGraph } from 'next/dist/lib/metadata/types/opengraph-types';
 
-import { LAYOUT_OPTIONS } from '@/config/enums';
-import MiniIcon from '@public/img/orient-logo-mini.png';
-import logoIconImg from '@public/img/orient-logo.png';
-import logoImg from '@public/logo.svg';
+import MiniIcon from '../public/img/orient-logo-mini.png';
+import logoIconImg from '../public/img/orient-logo.png';
+import logoImg from '../public/logo.svg';
+import { LAYOUT_OPTIONS } from './enums';
 
 enum MODE {
   DARK = 'dark',
@@ -24,7 +23,7 @@ export const siteConfig = {
 
 export const metaObject = (
   title?: string,
-  openGraph?: OpenGraph,
+  openGraph?: Partial<Metadata['openGraph']>,
   description: string = siteConfig.description,
 ): Metadata => {
   return {
