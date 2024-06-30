@@ -1,7 +1,7 @@
 'use client';
 
 import type { HTMLAttributes } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,6 +13,7 @@ import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import {
   DropdownMenu,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
@@ -47,11 +48,16 @@ export const Header = ({ className, ...props }: HeaderProps) => {
     },
   ];
 
-  let currentCountryCode = 'en';
+  const [currentCountryCode, setCurrentCountryCode] = useState('en');
 
-  if (typeof window !== 'undefined') {
-    currentCountryCode = localStorage.getItem('countryCode') ?? 'en';
-  }
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const nonEmpty = localStorage.getItem('countryCode');
+      if (nonEmpty) {
+        setCurrentCountryCode(locationIp === 'GE' ? 'ka' : 'en');
+      }
+    }
+  }, [locationIp]);
 
   if (locationIp !== 'GE' && currentCountryCode === 'en') {
     options = options.filter((option) => option.value !== 'ka');
@@ -137,11 +143,17 @@ export const Header = ({ className, ...props }: HeaderProps) => {
           <DropdownMenuContent className="mt-3">
             {options.map((option) => (
               <DropdownMenuItem
-                className="text-xs"
+                className="py-0 text-xs"
                 key={option.id}
                 onClick={() => changeLanguage(option.value)}
               >
-                {option.label}
+                <DropdownMenuCheckboxItem
+                  className="text-xs"
+                  checked={currentLocale === option.value}
+                  //onCheckedChange={setShowStatusBar}
+                >
+                  {option.label}
+                </DropdownMenuCheckboxItem>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>

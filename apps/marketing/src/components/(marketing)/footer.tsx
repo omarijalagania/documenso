@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 'use client';
 
-import { type HTMLAttributes, useEffect } from 'react';
+import { type HTMLAttributes, useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,6 +14,7 @@ import { cn } from '@documenso/ui/lib/utils';
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -22,6 +23,44 @@ import { ThemeSwitcher } from '@documenso/ui/primitives/theme-switcher';
 
 import useFetchLocation from '~/hooks/useFetchLocation';
 import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/client';
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
@@ -96,11 +135,18 @@ export const Footer = ({ className, ...props }: FooterProps) => {
   const changeLocale = useChangeLocale();
   const { locationIp } = useFetchLocation();
 
-  let currentCountryCode = 'en';
+  console.log('locationIp', locationIp);
 
-  if (typeof window !== 'undefined') {
-    currentCountryCode = localStorage.getItem('countryCode') ?? 'en';
-  }
+  const [currentCountryCode, setCurrentCountryCode] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const nonEmpty = localStorage.getItem('countryCode');
+      if (nonEmpty) {
+        setCurrentCountryCode(locationIp === 'GE' ? 'ka' : 'en');
+      }
+    }
+  }, [locationIp]);
 
   const countryHandler = (value: string) => {
     changeLocale(value as 'ka' | 'en');
@@ -178,29 +224,31 @@ export const Footer = ({ className, ...props }: FooterProps) => {
         </p>
 
         <div className="flex flex-wrap space-x-8">
-          <Select onValueChange={(value) => countryHandler(value)}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue
-                className="outline-none ring-0 focus:outline-none focus:ring-0"
-                placeholder={scopedT(
-                  COUNTRIES.find((country) => country.value === currentCountryCode)
-                    ?.label as keyof typeof scopedT,
-                )}
-              />
-            </SelectTrigger>
-            <SelectContent>
-              {COUNTRIES.map((country) => (
-                <SelectItem
-                  className="dark:hover:text-[#FFEB81]"
-                  key={country.id}
-                  value={country.value}
-                  defaultChecked={country.value === currentCountryCode}
-                >
-                  {scopedT(country.label as keyof typeof scopedT)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          {locationIp && (
+            <Select
+              defaultValue={currentCountryCode && (currentCountryCode as string)}
+              onValueChange={(value) => countryHandler(value)}
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue
+                  className="outline-none ring-0 focus:outline-none focus:ring-0"
+                  placeholder={scopedT(
+                    COUNTRIES.find((country) => country.value === currentCountryCode)
+                      ?.label as keyof typeof scopedT,
+                  )}
+                />
+              </SelectTrigger>
+              <SelectContent>
+                {COUNTRIES.map((country) => (
+                  <SelectGroup key={country.id}>
+                    <SelectItem className="dark:hover:text-[#FFEB81]" value={country.value}>
+                      {scopedT(country.label as keyof typeof scopedT)}
+                    </SelectItem>
+                  </SelectGroup>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
           <ThemeSwitcher />
         </div>
       </div>
