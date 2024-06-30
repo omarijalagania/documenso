@@ -27,6 +27,32 @@ import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/clie
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
 // import { StatusWidgetContainer } from './status-widget-container';
 
 export type FooterProps = HTMLAttributes<HTMLDivElement>;
@@ -70,9 +96,21 @@ export const Footer = ({ className, ...props }: FooterProps) => {
   const changeLocale = useChangeLocale();
   const { locationIp } = useFetchLocation();
 
+  let currentCountryCode = 'en';
+
+  if (typeof window !== 'undefined') {
+    currentCountryCode = localStorage.getItem('countryCode') ?? 'en';
+  }
+
+  const countryHandler = (value: string) => {
+    changeLocale(value as 'ka' | 'en');
+    localStorage.setItem('countryCode', value);
+  };
+
   useEffect(() => {
     if (locationIp === 'GE') {
       changeLocale('ka');
+      localStorage.setItem('countryCode', 'ka');
     }
   }, [changeLocale, locationIp]);
 
@@ -140,12 +178,12 @@ export const Footer = ({ className, ...props }: FooterProps) => {
         </p>
 
         <div className="flex flex-wrap space-x-8">
-          <Select onValueChange={(value) => changeLocale(value as 'ka' | 'en')}>
+          <Select onValueChange={(value) => countryHandler(value)}>
             <SelectTrigger className="w-[180px]">
               <SelectValue
                 className="outline-none ring-0 focus:outline-none focus:ring-0"
                 placeholder={scopedT(
-                  COUNTRIES.find((country) => country.value === currentLocale)
+                  COUNTRIES.find((country) => country.value === currentCountryCode)
                     ?.label as keyof typeof scopedT,
                 )}
               />
@@ -156,6 +194,7 @@ export const Footer = ({ className, ...props }: FooterProps) => {
                   className="dark:hover:text-[#FFEB81]"
                   key={country.id}
                   value={country.value}
+                  defaultChecked={country.value === currentCountryCode}
                 >
                   {scopedT(country.label as keyof typeof scopedT)}
                 </SelectItem>

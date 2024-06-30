@@ -47,7 +47,13 @@ export const Header = ({ className, ...props }: HeaderProps) => {
     },
   ];
 
-  if (locationIp !== 'GE') {
+  let currentCountryCode = 'en';
+
+  if (typeof window !== 'undefined') {
+    currentCountryCode = localStorage.getItem('countryCode') ?? 'en';
+  }
+
+  if (locationIp !== 'GE' && currentCountryCode === 'en') {
     options = options.filter((option) => option.value !== 'ka');
   }
 

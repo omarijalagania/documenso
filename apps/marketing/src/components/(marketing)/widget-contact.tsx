@@ -61,6 +61,13 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
   const [showSigningDialog, setShowSigningDialog] = useState(false);
   const [draftSignatureDataUrl, setDraftSignatureDataUrl] = useState<string | null>(null);
   const scopedT = useScopedI18n('contactPage');
+
+  let currentCountryCode = 'en';
+
+  if (typeof window !== 'undefined') {
+    currentCountryCode = localStorage.getItem('countryCode') ?? 'en';
+  }
+
   const geoAddressMap =
     'https://maps.google.com/maps?width=100%25&height=600&hl=en&q=4/15%20Lane%201,%20Z.%20Gamsakhurdia%20Ave,%20Kutaisi,%20Georgia,%204600+(My%20Business%20Name)&t=&z=14&ie=UTF8&iwloc=B&output=embed';
   const usAddressMap =
@@ -214,7 +221,9 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
                 </div>
                 <span>
                   <h3 className="text-base font-semibold">{scopedT('phone')}</h3>
-                  <p className="text-muted-foreground text-[15px]">+995 (32) 3100100</p>
+                  <p className="text-muted-foreground text-[15px]">
+                    {currentCountryCode === 'ka' ? '+995 (32) 3100100' : '+1 (718) 414 2010'}
+                  </p>
                 </span>
               </div>
               <div className="flex flex-shrink-0 items-center space-x-3">
@@ -240,8 +249,10 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
                 <span>
                   <h3 className="text-base font-semibold">{scopedT('address')}</h3>
                   <p className="text-muted-foreground text-[15px]">
-                    {currentLocale === 'ka'
-                      ? '4/15 Lane 1, Z. Gamsakhurdia Ave, Kutaisi, 4600, Georgia'
+                    {currentCountryCode === 'ka'
+                      ? currentLocale === 'ka'
+                        ? 'საქართველო, 4600, ქუთაისი, ზ. გამსახურდიას გამზ. 1 შეს 4/15'
+                        : '4/15 Lane 1, Z. Gamsakhurdia Ave, Kutaisi, 4600, Georgia'
                       : '1414 E 12th St, Brooklyn, NY 11230'}
                   </p>
                 </span>
@@ -263,15 +274,17 @@ export const WidgetContact = ({ className, children, ...props }: WidgetProps) =>
 
             <div className="bg-foreground/5 rounded-2xl p-4 md:w-1/2 ">
               <div>
-                <iframe
-                  width="100%"
-                  height={500}
-                  frameBorder={0}
-                  scrolling="no"
-                  marginHeight={0}
-                  marginWidth={0}
-                  src={locationIp === 'GE' ? geoAddressMap : usAddressMap}
-                ></iframe>
+                {
+                  <iframe
+                    width="100%"
+                    height={500}
+                    frameBorder={0}
+                    scrolling="no"
+                    marginHeight={0}
+                    marginWidth={0}
+                    src={currentCountryCode === 'ka' ? geoAddressMap : usAddressMap}
+                  ></iframe>
+                }
               </div>
             </div>
           </div>
