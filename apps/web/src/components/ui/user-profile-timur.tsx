@@ -1,14 +1,13 @@
 'use client';
 
-import Image from 'next/image';
+import { File, User } from 'lucide-react';
 
-import { File } from 'lucide-react';
-
-import timurImage from '@documenso/assets/images/timur.png';
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
 import { VerifiedIcon } from '@documenso/ui/icons/verified';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
+
+import { useScopedI18n } from '~/locales/client';
 
 export type UserProfileTimurProps = {
   className?: string;
@@ -17,6 +16,8 @@ export type UserProfileTimurProps = {
 
 export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps) => {
   const baseUrl = new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000');
+
+  const scopedT = useScopedI18n('auth');
 
   return (
     <div
@@ -29,25 +30,26 @@ export const UserProfileTimur = ({ className, rows = 2 }: UserProfileTimurProps)
         {baseUrl.host}/u/timur
       </div>
 
-      <div className="mt-4">
-        <Image
+      <div className="mt-4 flex h-24 w-24 items-center justify-center rounded-full border">
+        <User strokeWidth={1} size={80} color="#e2e8f0" />
+        {/* <Image
           src={timurImage}
           className="h-20 w-20 rounded-full"
           alt="image of timur ercan founder of documenso"
-        />
+        /> */}
       </div>
 
       <div className="mt-6">
         <div className="flex items-center justify-center gap-x-2">
-          <h2 className="text-2xl font-semibold">Timur Ercan</h2>
+          <h2 className="text-2xl font-semibold">{scopedT('nameN')}</h2>
 
           <VerifiedIcon className="text-primary h-8 w-8 dark:text-[#ffeb81]" />
         </div>
 
-        <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Hey I’m Timur</p>
+        {/* <p className="text-muted-foreground mt-4 max-w-[40ch] text-center text-sm">Hey I’m Timur</p> */}
 
         <p className="text-muted-foreground mt-1 max-w-[40ch] text-center text-sm">
-          Pick any of the following agreements below and start signing to get started
+          {scopedT('useToday')}
         </p>
       </div>
 

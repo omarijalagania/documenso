@@ -59,7 +59,7 @@ export const Header = ({ className, ...props }: HeaderProps) => {
     }
   }, [locationIp]);
 
-  if (locationIp !== 'GE' && currentCountryCode === 'en') {
+  if (locationIp !== 'GE' && currentCountryCode !== 'ka') {
     options = options.filter((option) => option.value !== 'ka');
   }
 

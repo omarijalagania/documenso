@@ -13,8 +13,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 
-import communityCardsImage from '@documenso/assets/images/community-cards.png';
 import { useAnalytics } from '@documenso/lib/client-only/hooks/use-analytics';
+import { WidgetRegister } from '@documenso/marketing/src/components/(marketing)/widget-register';
 import { trpc } from '@documenso/trpc/react';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -99,115 +99,234 @@ import geFlag from '../../../../public/images/ka.png';
 /* eslint-disable @typescript-eslint/require-await */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/require-await */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
-/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/require-await */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /* eslint-disable @typescript-eslint/require-await */
 
@@ -344,23 +463,23 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
 
   return (
     <>
-      <div className={cn('flex justify-center gap-x-12', className)}>
-        <div className="border-border relative hidden flex-1 overflow-hidden rounded-xl border xl:flex">
-          <div className="absolute -inset-8 -z-[2] backdrop-blur">
+      <div className={cn('flex w-full justify-center gap-x-12', className)}>
+        <WidgetRegister className="relative hidden  flex-1 rounded-xl  xl:flex">
+          {/* <div className="absolute -inset-8 -z-[2] backdrop-blur">
             <Image
               src={communityCardsImage}
               fill={true}
               alt="community-cards"
               className="dark:brightness-95 dark:contrast-[70%] dark:invert"
             />
-          </div>
+          </div> */}
 
-          <div className="bg-background/50 absolute -inset-8 -z-[1] backdrop-blur-[2px]" />
+          {/* <div className="bg-background/50 absolute -inset-8 -z-[1] backdrop-blur-[2px]" /> */}
 
           <div className="relative flex h-full w-full flex-col items-center justify-evenly">
-            <div className="bg-background rounded-2xl border px-4 py-1 text-sm font-medium">
+            {/* <div className="bg-background rounded-2xl border px-4 py-1 text-sm font-medium">
               User profiles are coming soon!
-            </div>
+            </div> */}
 
             <AnimatePresence>
               {step === 'BASIC_DETAILS' ? (
@@ -383,9 +502,11 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
 
             <div />
           </div>
-        </div>
+          <Footer />
+        </WidgetRegister>
+
         {/* min-h-[min(850px,80vh)] */}
-        <div className="border-border dark:bg-background relative z-10 flex  w-full max-w-lg flex-col rounded-xl border bg-neutral-100 p-6">
+        <div className="border-border dark:bg-background bg-muted relative z-10  flex w-full max-w-lg flex-col rounded-xl border p-6">
           {step === 'BASIC_DETAILS' && (
             <div className="h-20">
               <h1 className="text-xl font-semibold md:text-2xl">Create a new account</h1>
@@ -526,7 +647,7 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
                   <p className="text-muted-foreground mt-4 text-sm">
                     Already have an account?{' '}
                     <Link
-                      href="/signin"
+                      href={`/${currentLocale}/signin`}
                       className="text-primary duration-200 hover:opacity-70 dark:text-[#ffeb81]"
                     >
                       Sign in instead
@@ -566,7 +687,7 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
                   type="button"
                   size="lg"
                   variant="secondary"
-                  className="flex-1"
+                  className="border-primary flex-1 border dark:border-0"
                   disabled={step === 'BASIC_DETAILS' || form.formState.isSubmitting}
                   onClick={() => setStep('BASIC_DETAILS')}
                 >
@@ -603,7 +724,6 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
           </Form>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

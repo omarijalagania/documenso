@@ -92,6 +92,16 @@ import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/clie
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
 // import { StatusWidgetContainer } from './status-widget-container';
 
 export type FooterProps = HTMLAttributes<HTMLDivElement>;
@@ -139,12 +149,11 @@ export const Footer = ({ className, ...props }: FooterProps) => {
 
   const [currentCountryCode, setCurrentCountryCode] = useState('');
 
+  console.log('currentCountryCode', currentCountryCode);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const nonEmpty = localStorage.getItem('countryCode');
-      if (nonEmpty) {
-        setCurrentCountryCode(locationIp === 'GE' ? 'ka' : 'en');
-      }
+      setCurrentCountryCode(locationIp === 'GE' ? 'ka' : 'en');
     }
   }, [locationIp]);
 
@@ -157,6 +166,8 @@ export const Footer = ({ className, ...props }: FooterProps) => {
     if (locationIp === 'GE') {
       changeLocale('ka');
       localStorage.setItem('countryCode', 'ka');
+    } else {
+      localStorage.setItem('countryCode', 'en');
     }
   }, [changeLocale, locationIp]);
 
@@ -224,31 +235,30 @@ export const Footer = ({ className, ...props }: FooterProps) => {
         </p>
 
         <div className="flex flex-wrap space-x-8">
-          {locationIp && (
-            <Select
-              defaultValue={currentCountryCode && (currentCountryCode as string)}
-              onValueChange={(value) => countryHandler(value)}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue
-                  className="outline-none ring-0 focus:outline-none focus:ring-0"
-                  placeholder={scopedT(
-                    COUNTRIES.find((country) => country.value === currentCountryCode)
-                      ?.label as keyof typeof scopedT,
-                  )}
-                />
-              </SelectTrigger>
-              <SelectContent>
-                {COUNTRIES.map((country) => (
-                  <SelectGroup key={country.id}>
-                    <SelectItem className="dark:hover:text-[#FFEB81]" value={country.value}>
-                      {scopedT(country.label as keyof typeof scopedT)}
-                    </SelectItem>
-                  </SelectGroup>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
+          <Select
+            defaultValue={currentCountryCode && (currentCountryCode as string)}
+            onValueChange={(value) => countryHandler(value)}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue
+                className="outline-none ring-0 focus:outline-none focus:ring-0"
+                placeholder={scopedT(
+                  COUNTRIES.find((country) => country.value === currentCountryCode)
+                    ?.label as keyof typeof scopedT,
+                )}
+              />
+            </SelectTrigger>
+            <SelectContent>
+              {COUNTRIES.map((country) => (
+                <SelectGroup key={country.id}>
+                  <SelectItem className="dark:hover:text-[#FFEB81]" value={country.value}>
+                    {scopedT(country.label as keyof typeof scopedT)}
+                  </SelectItem>
+                </SelectGroup>
+              ))}
+            </SelectContent>
+          </Select>
+
           <ThemeSwitcher />
         </div>
       </div>

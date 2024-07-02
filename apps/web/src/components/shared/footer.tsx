@@ -19,6 +19,69 @@ import { ThemeSwitcher } from '@documenso/ui/primitives/theme-switcher';
 import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 import useFetchLocation from '../../../../marketing/src/hooks/useFetchLocation';
+import LanguageSwitch from './language-switch';
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
+
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
@@ -84,11 +147,11 @@ export const Footer = ({ className, ...props }: FooterProps) => {
   }, [changeLocale, locationIp]);
 
   return (
-    <div className={cn('border-t py-12', className)} {...props}>
-      <div className="mx-auto mt-4 flex w-full max-w-screen-xl flex-wrap items-center justify-between gap-4 px-8 md:mt-12 lg:mt-24">
-        <p className="text-muted-foreground text-sm">
+    <div className={cn('w-full ', className)} {...props}>
+      <div className="absolute bottom-6 flex w-full max-w-screen-xl flex-wrap items-center justify-between gap-4 px-8 ">
+        {/* <p className="text-muted-foreground text-sm">
           © {new Date().getFullYear()} Telecom 1 LLC. All rights reserved.
-        </p>
+        </p> */}
 
         <div className="flex flex-wrap space-x-8">
           <Select onValueChange={(value) => changeLocale(value as 'ka' | 'en')}>
@@ -113,8 +176,11 @@ export const Footer = ({ className, ...props }: FooterProps) => {
               ))}
             </SelectContent>
           </Select>
-          <ThemeSwitcher />
+
+          <LanguageSwitch />
         </div>
+
+        <ThemeSwitcher />
       </div>
     </div>
   );
