@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/require-await */
 'use client';
 
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,213 +34,10 @@ import { UserProfileTimur } from '~/components/ui/user-profile-timur';
 import { useCurrentLocale, useScopedI18n } from '~/locales/client';
 import type { SignUpSchema } from '~/schemas/sign-up.schema';
 import { signUpSchema } from '~/schemas/sign-up.schema';
+import { userRegister } from '~/services/actions';
 
 import usFlag from '../../../../public/images/en.png';
 import geFlag from '../../../../public/images/ka.png';
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-/* eslint-disable @typescript-eslint/require-await */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -339,11 +136,11 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
   const analytics = useAnalytics();
   const router = useRouter();
   const searchParams = useSearchParams();
-
   const [step, setStep] = useState<SignUpStep>('BASIC_DETAILS');
   const scopedT = useScopedI18n('auth');
+  const scopedTV = useScopedI18n('validation');
   const utmSrc = searchParams?.get('utm_source') ?? null;
-
+  const currentLocale = useCurrentLocale();
   // const baseUrl = new URL(NEXT_PUBLIC_WEBAPP_URL() ?? 'http://localhost:3000');
 
   const form = useForm<SignUpSchema>({
@@ -351,61 +148,110 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
       name: '',
       surName: '',
       email: '',
-      language: '',
+      language: currentLocale,
       password: '',
       repeatPassword: '',
       phone: '',
-      industry: '',
-      isAgreed: false,
+      // industry: '',
+      // isAgreed: false,
+    },
+    defaultValues: {
+      name: '',
+      surName: '',
+      email: '',
+      language: currentLocale,
+      password: '',
+      repeatPassword: '',
+      phone: '',
     },
     mode: 'onChange',
 
     resolver: zodResolver(signUpSchema),
   });
 
-  const setValue = form.setValue;
+  console.log('form', form.formState.errors);
 
   // const isSubmitting = form.formState.isSubmitting;
 
-  const currentLocale = useCurrentLocale();
   const { mutateAsync: signup } = trpc.auth.signup.useMutation();
+  const [isPending, startTransition] = useTransition();
+
+  const returnError = (response: {
+    data: { phone: (string | string[])[]; email: (string | string[])[] };
+  }) => {
+    if (
+      response.data?.phone &&
+      response.data.phone[0]?.includes('The phone has already been taken.')
+    ) {
+      return 'registeredPhone';
+    }
+    if (
+      response.data?.email &&
+      response.data.email[0]?.includes('The email has already been taken.')
+    ) {
+      return 'registeredMail';
+    }
+  };
 
   const onFormSubmit = async ({
     name,
     email,
     password,
+    repeatPassword,
     phone,
-    industry,
+    // industry,
     language,
     surName,
   }: SignUpSchema) => {
-    try {
-      //await signup({ name, email, password, phone, industry, language, surName});
+    const data = {
+      name,
+      email,
+      password,
+      repeatPassword,
+      phone: phone.replace(/\s+/g, ''),
+      // industry,
+      language,
+      surName,
+    };
 
-      //  router.push(`/unverified-account`);
+    //await signup({ name, email, password, phone, industry, language, surName});
 
-      toast({
-        title: 'Registration Successful',
-        description:
-          'You have successfully registered. Please verify your account by clicking on the link you received in the email.',
-        duration: 5000,
-      });
+    //  router.push(`/unverified-account`);
 
-      analytics.capture('App: User Sign Up', {
-        email,
-        timestamp: new Date().toISOString(),
-        custom_campaign_params: { src: utmSrc },
-      });
-    } catch (err) {
-      toast({
-        title: 'An unknown error occurred',
-        description: 'We encountered an unknown error while attempting to sign you Up.',
-      });
-    }
+    startTransition(async () => {
+      const response = await userRegister(data);
+
+      const errorString = returnError(response);
+
+      if (!response.success) {
+        toast({
+          title: 'An unknown error occurred',
+          //@ts-expect-error - This is a valid prop
+          description: scopedTV(errorString),
+        });
+      }
+
+      if (response.success) {
+        toast({
+          title: 'Registration Successful',
+          description:
+            'You have successfully registered. Please verify your account by clicking on the link you received in the email.',
+          duration: 5000,
+        });
+      }
+    });
   };
 
   const onNextClick = async () => {
-    const valid = await form.trigger(['name', 'email', 'password']);
+    const valid = await form.trigger([
+      'name',
+      'email',
+      'password',
+      'phone',
+      'language',
+      'surName',
+      'repeatPassword',
+    ]);
 
     if (valid) {
       setStep('CLAIM_USERNAME');
@@ -456,9 +302,9 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
   // Handle change to ensure only numeric values are kept
   const handleChange = (event: { target: { value: string } }) => {
     const { value } = event.target;
-    const formattedValue = formatPhoneNumber(value, 'ka');
+    const formattedValue = formatPhoneNumber(value, currentLocale);
 
-    setValue('phone', formattedValue, { shouldValidate: true });
+    form.setValue('phone', formattedValue, { shouldValidate: true });
   };
 
   return (
@@ -572,10 +418,9 @@ export const SignUpFormV2 = ({ className }: { className: string }) => {
                         <FormControl>
                           <Input
                             {...field}
+                            type="text"
                             maxLength={currentLocale === 'ka' ? 12 : 12}
                             minLength={currentLocale === 'ka' ? 12 : 12}
-                            value={form.getValues('phone')}
-                            name="phone"
                             onChange={handleChange}
                             onKeyPress={handleKeyPress}
                             onPaste={handlePaste}

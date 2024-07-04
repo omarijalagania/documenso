@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 'use client';
 
-import { type HTMLAttributes, useEffect, useState } from 'react';
+import { type HTMLAttributes } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +10,7 @@ import { Facebook, YoutubeIcon } from 'lucide-react';
 import LogoImage from 'public/images/oo-logo-32.png';
 import { FaXTwitter } from 'react-icons/fa6';
 
+import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
 import { cn } from '@documenso/ui/lib/utils';
 import {
   Select,
@@ -21,82 +22,7 @@ import {
 } from '@documenso/ui/primitives/select';
 import { ThemeSwitcher } from '@documenso/ui/primitives/theme-switcher';
 
-import useFetchLocation from '~/hooks/useFetchLocation';
 import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/client';
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
-
-/* eslint-disable @typescript-eslint/consistent-type-assertions */
 
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
@@ -143,33 +69,16 @@ export const Footer = ({ className, ...props }: FooterProps) => {
   const scopedT = useScopedI18n('footer');
   const currentLocale = useCurrentLocale();
   const changeLocale = useChangeLocale();
-  const { locationIp } = useFetchLocation();
-
-  console.log('locationIp', locationIp);
-
-  const [currentCountryCode, setCurrentCountryCode] = useState('');
-
-  console.log('currentCountryCode', currentCountryCode);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setCurrentCountryCode(locationIp === 'GE' ? 'ka' : 'en');
-    }
-  }, [locationIp]);
+  const { setCurrentCountry } = useFeatureFlags();
 
   const countryHandler = (value: string) => {
+    //setLang(value);
     changeLocale(value as 'ka' | 'en');
     localStorage.setItem('countryCode', value);
+    setCurrentCountry(value);
   };
 
-  useEffect(() => {
-    if (locationIp === 'GE') {
-      changeLocale('ka');
-      localStorage.setItem('countryCode', 'ka');
-    } else {
-      localStorage.setItem('countryCode', 'en');
-    }
-  }, [changeLocale, locationIp]);
+  const lang = localStorage.getItem('countryCode') as string;
 
   return (
     <div className={cn('border-t py-12', className)} {...props}>
@@ -236,14 +145,14 @@ export const Footer = ({ className, ...props }: FooterProps) => {
 
         <div className="flex flex-wrap space-x-8">
           <Select
-            defaultValue={currentCountryCode && (currentCountryCode as string)}
+            defaultValue={lang && (lang as string)}
             onValueChange={(value) => countryHandler(value)}
           >
             <SelectTrigger className="w-[180px]">
               <SelectValue
                 className="outline-none ring-0 focus:outline-none focus:ring-0"
                 placeholder={scopedT(
-                  COUNTRIES.find((country) => country.value === currentCountryCode)
+                  COUNTRIES.find((country) => country.value === lang)
                     ?.label as keyof typeof scopedT,
                 )}
               />

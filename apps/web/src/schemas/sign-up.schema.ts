@@ -15,7 +15,7 @@ export const signUpSchema = z
     }),
     language: z.string().trim().min(2),
 
-    phone: z.string().trim(),
+    phone: z.string(),
     // phone: z.string().min(5, {
     //   message: 'phone',
     // }),
@@ -23,13 +23,13 @@ export const signUpSchema = z
     password: z.string().trim().min(6, messages.passwordLengthMin),
     repeatPassword: z.string().min(6, messages.passwordLengthMin),
 
-    industry: z.string().trim().min(1, messages.industryIsRequired),
+    //industry: z.string().trim().min(1, messages.industryIsRequired),
     // isAgreed: z.boolean().refine((value) => value === true, {
     //   message: 'Please agree to the terms and conditions',
     // }),
-    isAgreed: z.boolean().refine((value) => value === true, {
-      message: messages.phoneLengthEn,
-    }),
+    // isAgreed: z.boolean().refine((value) => value === true, {
+    //   message: messages.phoneLengthEn,
+    // }),
   })
 
   .refine(
@@ -42,7 +42,7 @@ export const signUpSchema = z
       return true;
     },
     {
-      message: messages.phoneLengthEn,
+      message: messages.phoneNumberIsRequired,
 
       path: ['phone'],
     },

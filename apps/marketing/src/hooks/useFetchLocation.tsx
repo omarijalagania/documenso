@@ -2,9 +2,14 @@
 
 import { useEffect, useState } from 'react';
 
+import { useChangeLocale } from '~/locales/client';
+
 function useFetchLocation() {
   const [locationIp, setLocationIp] = useState<string>('');
+  const [lang, setLang] = useState<string>();
   const [loading, setLoading] = useState<boolean>(true);
+
+  const changeLocale = useChangeLocale();
 
   useEffect(() => {
     const locationCheck = localStorage.getItem('locationCheck');
@@ -28,7 +33,10 @@ function useFetchLocation() {
         const countryCode = data.CountryCode;
         setLocationIp(countryCode);
         setLoading(false);
-        const lang = countryCode === 'GE' ? 'ka' : 'en';
+        const lang2 = data.CountryCode === 'GE' ? 'ka' : 'en';
+        setLang(lang2);
+        localStorage.setItem('countryCode', lang2);
+        changeLocale(lang2);
         localStorage.setItem('step-1', JSON.stringify({ language: lang }));
       } catch (error) {
         console.error('Error:', error);
@@ -37,11 +45,13 @@ function useFetchLocation() {
     }
 
     void getLocation();
-  }, []);
+  }, [changeLocale, lang]);
 
   return {
     locationIp,
     loading,
+    lang,
+    setLang,
   };
 }
 

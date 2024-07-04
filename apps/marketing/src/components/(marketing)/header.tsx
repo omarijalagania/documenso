@@ -1,7 +1,7 @@
 'use client';
 
 import type { HTMLAttributes } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,7 +19,6 @@ import {
   DropdownMenuTrigger,
 } from '@documenso/ui/primitives/dropdown-menu';
 
-import useFetchLocation from '~/hooks/useFetchLocation';
 import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 import { HamburgerMenu } from './mobile-hamburger';
@@ -30,7 +29,6 @@ export type HeaderProps = HTMLAttributes<HTMLElement>;
 export const Header = ({ className, ...props }: HeaderProps) => {
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const scopedT = useScopedI18n('auth');
-  const { locationIp } = useFetchLocation();
   const currentLocale = useCurrentLocale();
   const changeLocale = useChangeLocale();
   const { getFlag } = useFeatureFlags();
@@ -48,18 +46,9 @@ export const Header = ({ className, ...props }: HeaderProps) => {
     },
   ];
 
-  const [currentCountryCode, setCurrentCountryCode] = useState('en');
+  const lang = localStorage.getItem('countryCode');
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const nonEmpty = localStorage.getItem('countryCode');
-      if (nonEmpty) {
-        setCurrentCountryCode(locationIp === 'GE' ? 'ka' : 'en');
-      }
-    }
-  }, [locationIp]);
-
-  if (locationIp !== 'GE' && currentCountryCode !== 'ka') {
+  if (lang !== 'ka') {
     options = options.filter((option) => option.value !== 'ka');
   }
 

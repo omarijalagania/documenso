@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { InfoIcon } from 'lucide-react';
 import { usePlausible } from 'next-plausible';
 
+import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
 import { NEXT_PUBLIC_WEBAPP_URL } from '@documenso/lib/constants/app';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -20,7 +21,6 @@ import {
   DialogTitle,
 } from '@documenso/ui/primitives/dialog';
 
-import useFetchIp from '~/hooks/useFetchIp';
 import { useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 export type PricingTableProps = HTMLAttributes<HTMLDivElement>;
@@ -413,11 +413,12 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
   const [showStartUpDialog, setShowStartUpDialog] = useState(false);
   const [dialogStartId, setDialogStartId] = useState<number | null>(null);
 
-  const { locationIpNoLocal } = useFetchIp();
   const [showBusinessDialog, setShowBusinessDialog] = useState(false);
   const [dialogBusinessId, setDialogBusinessId] = useState<number | null>(null);
   const currentLocale = useCurrentLocale();
   const [dialogId, setDialogId] = useState<number | null>(null);
+
+  const { currentCountry } = useFeatureFlags();
 
   const openPriceDialogHandler = (id: number) => {
     setDialogId(id);
@@ -592,14 +593,14 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           <div className="text-primary mt-2.5 text-xl font-medium">
             {period === 'MONTHLY' && (
               <div className="dark:invert">
-                {locationIpNoLocal === 'GE' && '45₾'}
-                {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$15'}
+                {currentCountry === 'ka' && '45₾'}
+                {currentCountry === 'en' && '$15'}
               </div>
             )}
             {period === 'YEARLY' && (
               <div className="dark:invert">
-                {locationIpNoLocal === 'GE' && '36₾'}
-                {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$12'}
+                {currentCountry === 'ka' && '36₾'}
+                {currentCountry === 'en' && '$12'}
               </div>
             )}
           </div>
@@ -656,14 +657,14 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           <div className="text-primary mt-2.5 text-xl font-medium">
             {period === 'MONTHLY' && (
               <div className="dark:invert">
-                {locationIpNoLocal === 'GE' && '75₾'}
-                {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$25'}
+                {currentCountry === 'ka' && '75₾'}
+                {currentCountry === 'en' && '$25'}
               </div>
             )}
             {period === 'YEARLY' && (
               <div className="dark:invert">
-                {locationIpNoLocal === 'GE' && '60₾'}
-                {locationIpNoLocal !== 'GE' && currentLocale === 'en' && '$20'}
+                {currentCountry === 'ka' && '60₾'}
+                {currentCountry === 'en' && '$20'}
               </div>
             )}
           </div>
