@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from 'react';
 
+import { useFeatureFlags } from '@documenso/lib/client-only/providers/feature-flag';
+
 import { useChangeLocale } from '~/locales/client';
 
 function useFetchLocation() {
   const [locationIp, setLocationIp] = useState<string>('');
   const [lang, setLang] = useState<string>();
   const [loading, setLoading] = useState<boolean>(true);
-
+  const { setCurrentCountry } = useFeatureFlags();
   const changeLocale = useChangeLocale();
 
   useEffect(() => {
@@ -37,6 +39,7 @@ function useFetchLocation() {
         setLang(lang2);
         localStorage.setItem('countryCode', lang2);
         changeLocale(lang2);
+        setCurrentCountry(lang2);
         localStorage.setItem('step-1', JSON.stringify({ language: lang }));
       } catch (error) {
         console.error('Error:', error);

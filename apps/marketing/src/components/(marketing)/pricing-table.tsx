@@ -592,16 +592,10 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           <p className="text-foreground text-4xl font-medium">{scopedT('startUp')}</p>
           <div className="text-primary mt-2.5 text-xl font-medium">
             {period === 'MONTHLY' && (
-              <div className="dark:invert">
-                {currentCountry === 'ka' && '45₾'}
-                {currentCountry === 'en' && '$15'}
-              </div>
+              <div className="dark:invert">{currentCountry === 'ka' ? '45₾' : '$15'}</div>
             )}
             {period === 'YEARLY' && (
-              <div className="dark:invert">
-                {currentCountry === 'ka' && '36₾'}
-                {currentCountry === 'en' && '$12'}
-              </div>
+              <div className="dark:invert">{currentCountry === 'ka' ? '36₾' : '$12'}</div>
             )}
           </div>
 
@@ -656,16 +650,10 @@ export const PricingTable = ({ className, ...props }: PricingTableProps) => {
           </p> */}
           <div className="text-primary mt-2.5 text-xl font-medium">
             {period === 'MONTHLY' && (
-              <div className="dark:invert">
-                {currentCountry === 'ka' && '75₾'}
-                {currentCountry === 'en' && '$25'}
-              </div>
+              <div className="dark:invert">{currentCountry === 'ka' ? '75₾' : '$25'}</div>
             )}
             {period === 'YEARLY' && (
-              <div className="dark:invert">
-                {currentCountry === 'ka' && '60₾'}
-                {currentCountry === 'en' && '$20'}
-              </div>
+              <div className="dark:invert">{currentCountry === 'ka' ? '60₾' : '$20'}</div>
             )}
           </div>
 
