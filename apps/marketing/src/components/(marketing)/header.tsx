@@ -19,6 +19,7 @@ import {
   DropdownMenuTrigger,
 } from '@documenso/ui/primitives/dropdown-menu';
 
+import useFetchLocation from '~/hooks/useFetchLocation';
 import { useChangeLocale, useCurrentLocale, useScopedI18n } from '~/locales/client';
 
 import { HamburgerMenu } from './mobile-hamburger';
@@ -32,6 +33,8 @@ export const Header = ({ className, ...props }: HeaderProps) => {
   const currentLocale = useCurrentLocale();
   const changeLocale = useChangeLocale();
   const { getFlag } = useFeatureFlags();
+
+  useFetchLocation();
 
   let options = [
     {
